@@ -1,11 +1,14 @@
-"use strict";
+'use strict';
 
-export default function createCanvasGame(){
+export default function createCanvasGame() {
 
-var canvas = document.getElementById("canvas");
+    let canvas = document.getElementById("canvas");
 
-var ctx = canvas.getContext("2d");
+    let context = canvas.getContext("2d");
 
-ctx.fillStyle = "#000000";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#000000";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    return context;
+
 }

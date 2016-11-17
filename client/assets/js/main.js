@@ -1,9 +1,14 @@
 'use strict';
 
 import createCanvasGame from './createCanvasGame.js';
+import Draw from './draw.class';
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
 
-createCanvasGame();
+    let context = createCanvasGame();
+
+    let draw = new Draw(context);
+
+    draw.snake();
 
 });
