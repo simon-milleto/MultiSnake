@@ -18,5 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	server.sendMove();
 
 	createCanvasGame();
+	board.render(board);
 
 });
