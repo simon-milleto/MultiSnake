@@ -34,7 +34,7 @@ export default class Snake {
 	}
 
 	addBodyPart(x, y) {
-		let snakePart = new SnakePart(this.context, x, y, this.width, this.height, SNAKECOLOR);
+		let snakePart = new SnakePart(this.context, x, y, this.width, this.height, this.color);
 		snakePart.draw();
 
 		this.bodyParts.push(snakePart);
