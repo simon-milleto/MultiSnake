@@ -85,19 +85,19 @@ export default class Snake {
 		this.bodyParts.splice(0, 0, this.bodyParts.splice(this.bodyParts.length - 1, 1)[0]);
 	}
 
-    move(){
-        if(this.direction === 'right') {
-            this.moveRight();
-        }
-        else if(this.direction === 'bottom') {
-            this.moveBottom();
-        }
-        else if(this.direction === 'top') {
-            this.moveTop();
-        }
-        else if(this.direction === 'left') {
-            this.moveLeft();
-        }
-    }
+	move(){
+		if(this.direction === 'right') {
+			this.moveRight();
+		}
+		else if(this.direction === 'down') {
+			this.moveDown();
+		}
+		else if(this.direction === 'up') {
+			this.moveUp();
+		}
+		else if(this.direction === 'left') {
+			this.moveLeft();
+		}
+	}
 
 }

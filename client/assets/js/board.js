@@ -3,8 +3,9 @@
 import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
 import Apple from './apple';
+import $ from 'jquery';
 
-const DELAY = 500;
+const DELAY = 150;
 
 export default class Board {
 
@@ -19,14 +20,10 @@ export default class Board {
 		let snake = new Snake(this.context, x, y);
 		snake.draw();
 
-		// Temp : Simulate moveRight on the snake
+		// Temp : Simulate 4 bodyParts on the snake
 		snake.addBodyPart(x - 60, y);
 		snake.addBodyPart(x - 120, y);
 		snake.addBodyPart(x - 180, y);
-
-		setInterval(() => {
-			snake.moveRight();
-		}, 500);
 		// End Temp
 
 		this.snakes.push(snake);
@@ -41,21 +38,22 @@ export default class Board {
 
 	render(board) {
 		setInterval(function(){
-			board.snakes[0].move()
+			board.snakes[0].move();
 		}, DELAY);
 
 		$('body').keydown(function(e) {
-			if(e.keyCode === 37) {
-				board.snakes[0].direction = 'left';
+			let snake = board.snakes[0];
+			if(e.keyCode === 37 && snake.direction != 'left' && snake.direction != 'right') {
+				snake.direction = 'left';
 			}
-			else if(e.keyCode === 38) {
-				board.snakes[0].direction = 'top';
+			else if(e.keyCode === 38 && snake.direction != 'up' && snake.direction != 'down') {
+				snake.direction = 'up';
 			}
-			else if(e.keyCode === 39) {
-				board.snakes[0].direction = 'right';
+			else if(e.keyCode === 39 && snake.direction != 'right' && snake.direction != 'left') {
+				snake.direction = 'right';
 			}
-			else if (e.keyCode === 40) {
-				board.snakes[0].direction = 'bottom';
+			else if (e.keyCode === 40 && snake.direction != 'down' && snake.direction != 'up') {
+				snake.direction = 'down';
 			}
 		});
 	}
