@@ -1,14 +1,23 @@
 'use strict';
 
 import createCanvasGame from './createCanvasGame.js';
-import Draw from './draw';
+import server from './sendToServer.js';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
+	var socket = io();
 
-    let context = createCanvasGame();
+	server.sendNewUser(socket);
+	server.sendDeleteUser(socket);
+	server.sendMove(socket);
 
-    let draw = new Draw(context);
+	socket.on('start', function(e){
+		console.log(e);
+	});
+	socket.on('end', function(e){
+		console.log(e);
+	});
 
-    draw.snake();
+	createCanvasGame();
+	
 
 });
