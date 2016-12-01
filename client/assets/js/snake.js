@@ -7,7 +7,7 @@ export default class Snake {
 		this.x = x;
 		this.y = y;
 		this.score = 0;
-
+		this.direction ="right";
 	}
 
 	draw() {
@@ -20,6 +20,21 @@ export default class Snake {
 
 	addScore(){
 		this.score += 1;
+	}
+
+	move(){
+		if(this.direction === 'right') {
+			this.moveRight();
+		}
+		else if(this.direction === 'bottom') {
+			this.moveBottom();
+		}
+		else if(this.direction === 'top') {
+			this.moveTop();
+		}
+		else if(this.direction === 'left') {
+			this.moveLeft();
+		}
 	}
 
 }
