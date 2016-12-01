@@ -43,16 +43,16 @@ export default class Board {
 
 		$('body').keydown(function(e) {
 			let snake = board.snakes[0];
-			if(e.keyCode === 37 && snake.direction != 'left' && snake.direction != 'right') {
+			if(e.keyCode === 37 && snake.direction !== 'left' && snake.direction !== 'right') {
 				snake.direction = 'left';
 			}
-			else if(e.keyCode === 38 && snake.direction != 'up' && snake.direction != 'down') {
+			else if(e.keyCode === 38 && snake.direction !== 'up' && snake.direction !== 'down') {
 				snake.direction = 'up';
 			}
-			else if(e.keyCode === 39 && snake.direction != 'right' && snake.direction != 'left') {
+			else if(e.keyCode === 39 && snake.direction !== 'right' && snake.direction !== 'left') {
 				snake.direction = 'right';
 			}
-			else if (e.keyCode === 40 && snake.direction != 'down' && snake.direction != 'up') {
+			else if (e.keyCode === 40 && snake.direction !== 'down' && snake.direction !== 'up') {
 				snake.direction = 'down';
 			}
 		});
