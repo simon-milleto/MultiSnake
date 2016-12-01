@@ -2,6 +2,11 @@
 
 import SnakePart from './snakePart';
 
+const SNAKEWIDTH = 50;
+const SNAKEHEIGHT = 50;
+const BODYPARTMARGIN = 10;
+const SNAKECOLOR = '#ffffff';
+
 export default class Snake {
 
 	constructor(context, x, y) {
@@ -10,6 +15,8 @@ export default class Snake {
 		this.y = y;
 		this.score = 0;
 		this.direction ="right";
+		this.width = SNAKEWIDTH;
+		this.height = SNAKEHEIGHT;
 
 		this.bodyParts = [];
 	}
@@ -19,7 +26,7 @@ export default class Snake {
 	}
 
 	addBodyPart(x, y) {
-		let snakePart = new SnakePart(this.context, x, y);
+		let snakePart = new SnakePart(this.context, x, y, this.width, this.height, SNAKECOLOR);
 		snakePart.draw();
 
 		this.bodyParts.push(snakePart);
@@ -31,7 +38,7 @@ export default class Snake {
 
 		lastBodyPart.remove();
 
-		lastBodyPart.y = firstBodyPart.y + 60;
+		lastBodyPart.y = firstBodyPart.y + this.height + BODYPARTMARGIN;
 		lastBodyPart.x = firstBodyPart.x;
 		lastBodyPart.draw();
 
@@ -44,7 +51,7 @@ export default class Snake {
 
 		lastBodyPart.remove();
 
-		lastBodyPart.y = firstBodyPart.y - 60;
+		lastBodyPart.y = firstBodyPart.y - this.height - BODYPARTMARGIN;
 		lastBodyPart.x = firstBodyPart.x;
 		lastBodyPart.draw();
 
@@ -58,7 +65,7 @@ export default class Snake {
 		lastBodyPart.remove();
 
 		lastBodyPart.y = firstBodyPart.y;
-		lastBodyPart.x = firstBodyPart.x - 60;
+		lastBodyPart.x = firstBodyPart.x - this.width - BODYPARTMARGIN;
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
@@ -71,7 +78,7 @@ export default class Snake {
 		lastBodyPart.remove();
 
 		lastBodyPart.y = firstBodyPart.y;
-		lastBodyPart.x = firstBodyPart.x + 60;
+		lastBodyPart.x = firstBodyPart.x + this.width + BODYPARTMARGIN;
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
