@@ -1,17 +1,30 @@
 "use strict";
+import io from 'socket.io-client';
+var socket = io();
+var ee = require('event-emitter');
 
-export default {
- 	sendNewUser(socket){
+var serverObject = ee({
+	sendNewUser(){
 		socket.on('client ID', function(id){
 			console.log("Nouvel utilisateur : " + id);
 		});
 	},
-	sendDeleteUser(socket, event){
+	sendDeleteUser(){
 		socket.on('disconnect message', function(){
 			console.log("Un utilisateur est parti");
 		});
 	},
-	sendMove(socket, event){
+	sendMove(event){
 		socket.emit('movement', event);
 	}
-}
+});
+
+socket.on('start', function(e){
+	console.log(e);
+});
+socket.on('end', function(e){
+	console.log(e);
+});
+ 
+
+export default serverObject;

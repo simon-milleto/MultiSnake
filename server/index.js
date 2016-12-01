@@ -3,8 +3,8 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-const totalDuration = 420000;
-const gameDuration = 300000;
+const totalDuration = 5000;
+const gameDuration = 3000;
 
 app.use(express.static('../client'));
 
