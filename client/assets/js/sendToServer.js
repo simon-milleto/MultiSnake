@@ -3,28 +3,37 @@ import io from 'socket.io-client';
 var socket = io();
 var ee = require('event-emitter');
 
+var clientId;
+
 var serverObject = ee({
 	sendNewUser(){
-		socket.on('client ID', function(id){
-			console.log("Nouvel utilisateur : " + id);
-		});
+		socket.emit('client ID', clientId);
 	},
 	sendDeleteUser(){
-		socket.on('disconnect message', function(){
-			console.log("Un utilisateur est parti");
-		});
+		socket.emit('disconnet', 'Un utilisateur s\'est déconnecté');
 	},
 	sendMove(event){
 		socket.emit('movement', event);
 	}
 });
 
-socket.on('start', function(e){
-	console.log(e);
+socket.on('start', function(){
+	serverObject.emit('start');
 });
-socket.on('end', function(e){
-	console.log(e);
-});
- 
 
+socket.on('end', function(){
+	serverObject.emit('end');
+});
+
+socket.on('client ID', function(id){
+	clientId = id;
+});
+
+socket.on('disconnect', function() {
+	serverObject.emit('disconnect');
+});
+
+window.addEventListener('offline', serverObject.emit('disconnect'));
+
+ 
 export default serverObject;
