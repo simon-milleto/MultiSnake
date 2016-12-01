@@ -10,4 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	board.newSnake(300,300);
 	board.newApple(500,350);
 
+	board.render(board);
+
 });
