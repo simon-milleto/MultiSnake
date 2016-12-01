@@ -10,22 +10,32 @@ export default class Board {
 
 // A snake store his position (x and y) and his score
 	constructor() {
-		this.snakes = [];
 		this.context = createCanvasGame();
+		this.snakes = [];
 		this.apples = [];
 	}
 
-	newSnake(x, y){
-
-
-		let snake = new Snake(x, y);
+	newSnake(x, y) {
+		let snake = new Snake(this.context, x, y);
 		snake.draw();
+
+		// Temp : Simulate moveRight on the snake
+		snake.addBodyPart(x - 60, y);
+		snake.addBodyPart(x - 120, y);
+		snake.addBodyPart(x - 180, y);
+
+		setInterval(() => {
+			snake.moveRight();
+		}, 500);
+		// End Temp
+
 		this.snakes.push(snake);
 	}
 
-	newApple(x,y){
-		let apple = new Apple(x, y);
+	newApple(x, y) {
+		let apple = new Apple(this.context, x, y);
 		apple.draw();
+
 		this.apples.push(apple);
 	}
 
