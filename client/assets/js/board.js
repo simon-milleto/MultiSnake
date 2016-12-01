@@ -26,7 +26,7 @@ export default class Board {
 	}
 
 	newSnake(x, y){
-		let snake = new Snake(this.context,x,y, this.colorAvailable());
+		let snake = new Snake(this.context,x,y, this.getAvailableColor());
 		snake.draw();
 		this.snakes.push(snake);
 	}
@@ -37,15 +37,17 @@ export default class Board {
 		this.apples.push(apple);
 	}
 
-	colorAvailable(){
-		let colorsnake = this.snakes.map(function(snake){
+	getAvailableColor(){
+		let snakeColor = this.snakes.map(function(snake){
 			return snake.color;
 		});
 
-		let color_available =  this.color.filter(function(c) {
-			return colorsnake.indexOf(c) === -1;
+		let availableColor =  this.color.find(function(c) {
+			if(!snakeColor.includes(c)){
+				return c;
+			}
 		});
-		return color_available[0];
+		return availableColor;
 	}
 
 }
