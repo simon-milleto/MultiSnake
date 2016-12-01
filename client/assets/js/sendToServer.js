@@ -33,7 +33,9 @@ socket.on('disconnect', function() {
 	serverObject.emit('disconnect');
 });
 
-window.addEventListener('offline', serverObject.emit('disconnect'));
+window.addEventListener('offline', function() {
+	serverObject.emit('disconnect');
+});
 
  
 export default serverObject;
