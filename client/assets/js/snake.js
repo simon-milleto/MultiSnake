@@ -5,15 +5,23 @@ import SnakePart from './snakePart';
 const SNAKEWIDTH = 50;
 const SNAKEHEIGHT = 50;
 const BODYPARTMARGIN = 10;
-const SNAKECOLOR = '#ffffff';
 
 export default class Snake {
 
-	constructor(context, x, y) {
+	constructor(context, x, y, color) {
 		this.context = context;
 		this.x = x;
 		this.y = y;
 		this.score = 0;
+		this.color = color;
+	}
+
+	draw() {
+		this.context.beginPath();
+		this.context.rect(this.x, this.y, 50, 50);
+		this.context.fillStyle = this.color;
+		this.context.fill();
+		this.context.closePath();
 		this.direction ="right";
 		this.width = SNAKEWIDTH;
 		this.height = SNAKEHEIGHT;

@@ -9,15 +9,26 @@ const DELAY = 150;
 
 export default class Board {
 
-// A snake store his position (x and y) and his score
+	// A snake store his position (x and y) and his score
 	constructor() {
 		this.context = createCanvasGame();
 		this.snakes = [];
 		this.apples = [];
+		this.color = [
+			"#468966",
+			"#fff1a8",
+			"#FFB03B",
+			"#B64926",
+			"#f64804",
+			"#3032cd",
+			"#CD2C24",
+			"#13ad00",
+			"#51f1e0",
+			"#F2385A"
+		];
 	}
-
 	newSnake(x, y) {
-		let snake = new Snake(this.context, x, y);
+		let snake = new Snake(this.context, x, y,this.getAvailableColor());
 		snake.draw();
 
 		// Temp : Simulate 4 bodyParts on the snake
@@ -34,6 +45,19 @@ export default class Board {
 		apple.draw();
 
 		this.apples.push(apple);
+	}
+
+	getAvailableColor(){
+		let snakeColor = this.snakes.map(function(snake){
+			return snake.color;
+		});
+
+		let availableColor =  this.color.find(function(c) {
+			if(!snakeColor.includes(c)){
+				return c;
+			}
+		});
+		return availableColor;
 	}
 
 	render(board) {
