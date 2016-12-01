@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+<<<<<<< HEAD
     <title>Socket.IO chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,32 +21,15 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+=======
+    <title>Socket</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="assets/js/bundle.js"></script>
+>>>>>>> server
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-		var socket = io();
-		socket.on('client ID', function(id){
-		console.log(id);
-		});
-		$('form').submit(function(){
-			socket.emit('chat message', $('#m').val());
-			$('#m').val('');
-			return false;
-		});
-		$(window).keydown(function(e) {
-			console.log(e);
-		    socket.emit('keypress message', e.key + ' was pressed');
-
-		});
-		socket.on('keypress message', function(msg){
-			$('#messages').append($('<li>').text(msg));
-		});
-		socket.on('disconnect message', function(){
-			$('#messages').append($('<li>').text('A user has left the board'));
-		});
-		socket.on('connect message', function(){
-			$('#messages').append($('<li>').text('A user has joined the board'));
-		})
-    </script>
+  </head>
+  <body>
+    
   </body>
 </html>
