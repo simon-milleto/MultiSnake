@@ -4,13 +4,13 @@ import Snake from './snake';
 
 export default class Draw {
 
-    constructor(context) {
-        this.context = context;
-    }
+	constructor(context) {
+		this.context = context;
+	}
 
-    snake() {
-        let snake = new Snake(50, 50);
-        snake.draw(this.context);
-    }
-
+	snake(x) {
+		let snake = new Snake(50, 50);
+		snake.draw(this.context);
+		return snake;
+	}
 }
