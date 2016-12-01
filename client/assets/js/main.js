@@ -1,7 +1,7 @@
 'use strict';
 
 import createCanvasGame from './createCanvasGame.js';
-import Draw from './draw.class';
+import Draw from './draw';
 
 document.addEventListener('DOMContentLoaded', function () {
 

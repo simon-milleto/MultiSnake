@@ -1,6 +1,6 @@
 'use strict';
 
-import Snake from './snake.class';
+import Snake from './snake';
 
 export default class Draw {
 
