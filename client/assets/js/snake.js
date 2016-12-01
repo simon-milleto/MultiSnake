@@ -35,7 +35,7 @@ export default class Snake {
 		lastBodyPart.x = firstBodyPart.x;
 		lastBodyPart.draw();
 
-		this.bodyParts.move(this.bodyParts.length - 1, 0);
+		this.moveBodyPartsInArray();
 	}
 
 	moveUp() {
@@ -48,7 +48,7 @@ export default class Snake {
 		lastBodyPart.x = firstBodyPart.x;
 		lastBodyPart.draw();
 
-		this.bodyParts.move(this.bodyParts.length - 1, 0);
+		this.moveBodyPartsInArray();
 	}
 
 	moveLeft() {
@@ -61,7 +61,7 @@ export default class Snake {
 		lastBodyPart.x = firstBodyPart.x - 60;
 		lastBodyPart.draw();
 
-		this.bodyParts.move(this.bodyParts.length - 1, 0);
+		this.moveBodyPartsInArray();
 	}
 
 	moveRight() {
@@ -74,26 +74,39 @@ export default class Snake {
 		lastBodyPart.x = firstBodyPart.x + 60;
 		lastBodyPart.draw();
 
-		this.bodyParts.move(this.bodyParts.length - 1, 0);
+		this.moveBodyPartsInArray();
 	}
 
 	addScore(){
 		this.score += 1;
 	}
 
-	move(){
-		if(this.direction === 'right') {
-			this.moveRight();
+	moveBodyPartsInArray() {
+		let old_index = this.bodyParts.length - 1;
+		let new_index = 0;
+
+		if (new_index >= this.bodyParts.length) {
+			var k = new_index - this.bodyParts.length;
+			while ((k--) + 1) {
+				this.bodyParts.push(undefined);
+			}
 		}
-		else if(this.direction === 'bottom') {
-			this.moveBottom();
-		}
-		else if(this.direction === 'top') {
-			this.moveTop();
-		}
-		else if(this.direction === 'left') {
-			this.moveLeft();
-		}
+		this.bodyParts.splice(new_index, 0, this.bodyParts.splice(old_index, 1)[0]);
 	}
+
+    move(){
+        if(this.direction === 'right') {
+            this.moveRight();
+        }
+        else if(this.direction === 'bottom') {
+            this.moveBottom();
+        }
+        else if(this.direction === 'top') {
+            this.moveTop();
+        }
+        else if(this.direction === 'left') {
+            this.moveLeft();
+        }
+    }
 
 }
