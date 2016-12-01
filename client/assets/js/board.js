@@ -1,24 +1,32 @@
 'use strict';
 
-import Canvas from './canvas.js';
+import createCanvasGame from './createCanvasGame.js';
 import Draw from './draw';
 
 export default class Board {
 
+// A snake store his position (x and y) and his score
   constructor() {
-    let canvas = new Canvas();
     this.snakes = [];
-    this.context = canvas.draw();
+    this.context = createCanvasGame();
     this.apples = [];
   }
 
-  newPlayer(x, y){
+  newSnake(x, y){
 
     let draw = new Draw(this.context);
 
-    let snake = draw.snake(x,y);
+    let snake = draw.snake(this.context, x,y);
 
     this.snakes.push(snake);
+  }
+
+  newApple(x,y){
+    let draw = new Draw(this.context);
+
+    let apple = draw.apple(this.context, x,y);
+
+    this.apples.push(apple);
   }
 
 }

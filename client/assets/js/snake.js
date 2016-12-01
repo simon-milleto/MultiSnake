@@ -5,6 +5,8 @@ export default class Snake {
     constructor(x, y) {
         this.x = x;
         this.y = y;
+        this.score = 0;
+
     }
 
     draw(context) {
@@ -13,6 +15,10 @@ export default class Snake {
         context.fillStyle = '#ffffff';
         context.fill();
         context.closePath();
+    }
+
+    addScore(){
+      this.score += 1;
     }
 
 }
