@@ -1,7 +1,8 @@
 'use strict';
 
 import createCanvasGame from './createCanvasGame.js';
-import Draw from './draw';
+import Snake from './snake';
+import Apple from './apple';
 
 export default class Board {
 
@@ -14,18 +15,15 @@ export default class Board {
 
 	newSnake(x, y){
 
-		let draw = new Draw(this.context);
 
-		let snake = draw.snake(this.context, x,y);
-
+		let snake = new Snake(this.context,x,y);
+		snake.draw();
 		this.snakes.push(snake);
 	}
 
 	newApple(x,y){
-		let draw = new Draw(this.context);
-
-		let apple = draw.apple(this.context, x,y);
-
+		let apple = new Apple(this.context,x,y);
+		apple.draw();
 		this.apples.push(apple);
 	}
 
