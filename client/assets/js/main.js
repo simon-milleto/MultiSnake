@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import createCanvasGame from './createCanvasGame.js';
 import Draw from './draw';
