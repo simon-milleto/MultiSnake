@@ -2,13 +2,21 @@
 
 export default class Snake {
 
-	constructor(context, x, y) {
+	constructor(context, x, y, name) {
 		this.context = context;
 		this.x = x;
 		this.y = y;
 		this.score = 0;
 		this.direction ="right";
+		this.name = name;
 	}
+	getName(){
+		return this.name;
+	}
+	getScore(){
+		return this.score;
+	}
+
 
 	draw() {
 		this.context.beginPath();
@@ -36,5 +44,4 @@ export default class Snake {
 			this.moveLeft();
 		}
 	}
-
 }

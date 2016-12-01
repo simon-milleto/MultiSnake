@@ -11,6 +11,8 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      canvas{z-index:10; }
+      #scoreboard{background-color:rgba(20,20,20,0.5);width:300px;position:fixed;right:0;top:0;height:500px;z-index:20;}
     </style>
     <script src="assets/js/bundle.js"></script>
   </head>
@@ -20,6 +22,7 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+    <ul id="scoreboard"></ul>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
