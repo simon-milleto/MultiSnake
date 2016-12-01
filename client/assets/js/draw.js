@@ -8,7 +8,7 @@ export default class Draw {
 		this.context = context;
 	}
 
-	snake(x) {
+	snake() {
 		let snake = new Snake(50, 50);
 		snake.draw(this.context);
 		return snake;

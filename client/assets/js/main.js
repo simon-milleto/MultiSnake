@@ -4,7 +4,7 @@ import createCanvasGame from './createCanvasGame.js';
 import $ from 'jquery';
 import Draw from './draw';
 
-const SPEED = 500;
+const DELAY = 500;
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	setInterval(function(){
 		snake.move()
-	}, SPEED);
+	}, DELAY);
 
 
 	$('body').keydown(function(e) {
