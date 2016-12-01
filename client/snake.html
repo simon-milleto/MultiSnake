@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Snake</title>
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+</head>
+
+<style>
+div {
+	width: 20px;
+	height: 20px;
+	background-color: red;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+</style>
+
+<body>
+
+
+</body>
+
+<script>
+	var snake = document.createElement("div");
+	$(snake).addClass('#snake');
+	$('body').append(snake);
+
+	var x = 0;
+	var y = 0;
+	var vitesse = 15;
+	var distance = 8;
+	var direction = 'right';
+
+
+	setInterval(function(){display(direction); }, vitesse);
+
+
+	function display(direction) {
+		if(direction == 'right') {
+			x = x + distance;
+			snake.style.left = x + 'px';
+		}
+		else if(direction == 'bottom') {
+			y = y + distance;
+			snake.style.top = y + 'px';
+		}
+		else if(direction == 'top') {
+			y = y - distance;
+			snake.style.top = y + 'px';
+		}
+		else {
+			x = x - distance;
+			snake.style.left = x + 'px';
+		}
+	}
+
+	$('body').keydown(function(e) {
+		if(e.keyCode == 37) {
+			direction = 'left';
+		}
+		else if(e.keyCode == 38) {
+   			direction = 'top';
+		}
+		else if(e.keyCode == 39) {
+   			direction = 'right';
+		}
+		else if (e.keyCode == 40) {
+   			direction = 'bottom';
+		}
+		else {
+
+		}
+	});
+
+</script>
+
+</html>

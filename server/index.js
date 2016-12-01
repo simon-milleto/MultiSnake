@@ -1,15 +1,28 @@
-const express = require('express');
-const app = express();
-
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+var express = require('express');
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 app.use(express.static('../client'));
 
-app.get('/', function (req, res) {
-  res.render(__dirname + 'index.html');
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/index.html');
 });
 
-app.listen(3000, () => {
-	console.log('Listening on port 3000');
+io.on('connection', socket => {
+	io.emit('client ID', socket.id);
+	io.emit('connect message');
+	socket.on('chat message', msg => {
+		io.emit('chat message', msg);
+	});
+	socket.on('keypress message', msg => {
+		io.emit('keypress message', msg);
+	});
+	socket.on('disconnect', () =>{
+		io.emit('disconnect message');
+	});
+});
+
+http.listen(3000, () => {
+	console.log('listening on *:3000');
 });

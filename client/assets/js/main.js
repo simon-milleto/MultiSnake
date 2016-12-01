@@ -1,36 +1,33 @@
-'use strict';
+"use strict";
 
-import createCanvasGame from './createCanvasGame.js';
-import $ from 'jquery';
+var $ = require("jquery");
+import Board from './board';
 import Draw from './draw';
 
 const DELAY = 500;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-	let context = createCanvasGame();
+	let board = new Board(1600, 900);
 
-	let draw = new Draw(context);
-
-	let snake = draw.snake();
+	let draw = new Draw(board.context);
 
 	setInterval(function(){
 		snake.move()
 	}, DELAY);
 
-
 	$('body').keydown(function(e) {
 		if(e.keyCode == 37) {
-			snake.direction = 'left';
+			draw.snake.direction = 'left';
 		}
 		else if(e.keyCode == 38) {
-			snake.direction = 'top';
+			draw.snake.direction = 'top';
 		}
 		else if(e.keyCode == 39) {
-			snake.direction = 'right';
+			draw.snake.direction = 'right';
 		}
 		else if (e.keyCode == 40) {
-			snake.direction = 'bottom';
+			draw.snake.direction = 'bottom';
 		}
 	});
 
