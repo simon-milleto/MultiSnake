@@ -6,7 +6,7 @@ import Apple from './apple';
 
 export default class Board {
 
-// A snake store his position (x and y) and his score
+	// A snake store his position (x and y) and his score
 	constructor() {
 		this.snakes = [];
 		this.context = createCanvasGame();
@@ -26,20 +26,26 @@ export default class Board {
 	}
 
 	newSnake(x, y){
-
-
-		let snake = new Snake(this.context,x,y, this.color[0]);
+		let snake = new Snake(this.context,x,y, this.colorAvailable());
 		snake.draw();
 		this.snakes.push(snake);
-
-		this.color.shift();
-
 	}
 
 	newApple(x,y){
 		let apple = new Apple(this.context,x,y);
 		apple.draw();
 		this.apples.push(apple);
+	}
+
+	colorAvailable(){
+		let colorsnake = this.snakes.map(function(snake){
+			return snake.color;
+		});
+
+		let color_available =  this.color.filter(function(c) {
+			return colorsnake.indexOf(c) === -1;
+		});
+		return color_available[0];
 	}
 
 }
