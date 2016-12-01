@@ -37,7 +37,7 @@ export default class Board {
 
 	render(board) {
 		setInterval(function(){
-			board.snakes[0].move()
+			board.snakes[0].move();
 		}, DELAY);
 
 		board.snakes.forEach(function(e){
