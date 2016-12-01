@@ -23,8 +23,8 @@ module.exports = {
             "double"
         ],
         "semi": [
-            "off",
-            "never"
+            "error",
+            "always"
         ],
         "no-console":[
             "off"
