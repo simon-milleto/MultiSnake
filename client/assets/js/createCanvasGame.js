@@ -2,13 +2,13 @@
 
 export default function createCanvasGame() {
 
-    let canvas = document.getElementById("canvas");
+	let canvas = document.getElementById("canvas");
 
-    let context = canvas.getContext("2d");
+	let context = canvas.getContext("2d");
 
-    context.fillStyle = "#000000";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+	context.fillStyle = "#000000";
+	context.fillRect(0, 0, canvas.width, canvas.height);
 
-    return context;
+	return context;
 
 }

@@ -5,18 +5,22 @@ import Apple from './apple';
 
 export default class Draw {
 
-    constructor(context) {
-        this.context = context;
-    }
+	constructor(context) {
+		this.context = context;
+	}
 
-    snake() {
-        let snake = new Snake(this.context, 50, 50);
-        snake.draw();
-    }
-    
-    apple() {
-        let apple = new Apple(this.context, 200, 350);
-        apple.draw();
-    }
+	snake(x,y) {
+		let snake = new Snake(this.context, x, y);
+		snake.draw();
+
+		return snake;
+	}
+
+	apple(x,y) {
+		let apple = new Apple(this.context, x, y);
+		apple.draw();
+
+		return apple;
+	}
 
 }
