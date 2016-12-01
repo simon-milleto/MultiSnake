@@ -10,9 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	let board = new Board();
 
 	board.newSnake(50,50);
-	board.newSnake(300,300);
-	board.newSnake(400,600);
+	// board.newSnake(300,300);
 	board.newApple(500,350);
+	board.newApple(900,50);
+	board.newApple(800,550);
+	board.newApple(1100,200);
+	board.newApple(200,800);
 
 	server.sendNewUser();
 	server.sendDeleteUser();

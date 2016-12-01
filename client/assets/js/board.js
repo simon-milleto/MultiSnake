@@ -67,6 +67,7 @@ export default class Board {
 	render(board) {
 		setInterval(function(){
 			board.snakes[0].move();
+			board.checkSnakeWithAppleCollision();
 		}, DELAY);
 
 		$('body').keydown(function(e) {
@@ -83,6 +84,12 @@ export default class Board {
 			else if (e.keyCode === 40 && snake.direction !== 'up') {
 				snake.direction = 'down';
 			}
+		});
+	}
+
+	checkSnakeWithAppleCollision() {
+		this.snakes.forEach((snake) => {
+			snake.checkCollisionWithApples(this.apples);
 		});
 	}
 

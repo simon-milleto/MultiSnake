@@ -113,4 +113,25 @@ export default class Snake {
 		}
 	}
 
+	checkCollisionWithApples(apples) {
+		let firstBodyPart = this.bodyParts[0];
+        let lastBodyPart = this.bodyParts[this.bodyParts.length - 1];
+
+		apples.forEach((apple, index) => {
+			if (firstBodyPart.x < apple.x + apple.radius * 2 &&
+                firstBodyPart.x + firstBodyPart.width > apple.x &&
+                firstBodyPart.y < apple.y + apple.radius * 2 &&
+                firstBodyPart.height + firstBodyPart.y > apple.y) {
+
+				apple.remove();
+				apples.splice(index, 1);
+				this.addScore();
+
+                console.log(this.score);
+                this.addBodyPart(lastBodyPart.x - (this.width + BODYPARTMARGIN), lastBodyPart.y);
+
+			}
+		});
+	}
+
 }
