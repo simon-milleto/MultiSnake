@@ -82,16 +82,7 @@ export default class Snake {
 	}
 
 	moveBodyPartsInArray() {
-		let old_index = this.bodyParts.length - 1;
-		let new_index = 0;
-
-		if (new_index >= this.bodyParts.length) {
-			var k = new_index - this.bodyParts.length;
-			while ((k--) + 1) {
-				this.bodyParts.push(undefined);
-			}
-		}
-		this.bodyParts.splice(new_index, 0, this.bodyParts.splice(old_index, 1)[0]);
+		this.bodyParts.splice(0, 0, this.bodyParts.splice(this.bodyParts.length - 1, 1)[0]);
 	}
 
     move(){
