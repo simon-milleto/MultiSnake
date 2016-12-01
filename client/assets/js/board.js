@@ -39,6 +39,8 @@ export default class Board {
 		// End Temp
 
 			this.snakes.push(snake);
+		}else{
+			console.error('Error : only 10 snakes can be on the board');
 		}
 	}
 
