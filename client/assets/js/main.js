@@ -1,6 +1,6 @@
 "use strict";
 
-var $ = require("jquery");
+import $ from 'jquery';
 import Board from './board';
 
 document.addEventListener('DOMContentLoaded', function () {

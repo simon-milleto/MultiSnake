@@ -35,16 +35,16 @@ export default class Board {
 		}, DELAY);
 
 		$('body').keydown(function(e) {
-			if(e.keyCode == 37) {
+			if(e.keyCode === 37) {
 				board.snakes[0].direction = 'left';
 			}
-			else if(e.keyCode == 38) {
+			else if(e.keyCode === 38) {
 				board.snakes[0].direction = 'top';
 			}
-			else if(e.keyCode == 39) {
+			else if(e.keyCode === 39) {
 				board.snakes[0].direction = 'right';
 			}
-			else if (e.keyCode == 40) {
+			else if (e.keyCode === 40) {
 				board.snakes[0].direction = 'bottom';
 			}
 		});

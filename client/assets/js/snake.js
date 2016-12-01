@@ -23,16 +23,16 @@ export default class Snake {
 	}
 
 	move(){
-		if(this.direction == 'right') {
+		if(this.direction === 'right') {
 			this.moveRight();
 		}
-		else if(this.direction == 'bottom') {
+		else if(this.direction === 'bottom') {
 			this.moveBottom();
 		}
-		else if(this.direction == 'top') {
+		else if(this.direction === 'top') {
 			this.moveTop();
 		}
-		else if(this.direction == 'left') {
+		else if(this.direction === 'left') {
 			this.moveLeft();
 		}
 	}
