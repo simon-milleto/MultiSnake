@@ -8,9 +8,11 @@ export default class Draw {
         this.context = context;
     }
 
-    snake() {
-        let snake = new Snake(50, 50);
+    snake(x,y) {
+        let snake = new Snake(x, y);
         snake.draw(this.context);
+
+        return snake;
     }
 
 }
