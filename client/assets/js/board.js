@@ -16,7 +16,7 @@ export default class Board {
 		this.apples = [];
 	}
 
-	newSnake(x, y) {
+	newSnake(x, y, name) {
 		let snake = new Snake(this.context, x, y,name);
 		snake.draw();
 
@@ -38,11 +38,17 @@ export default class Board {
 	render(board) {
 		setInterval(function(){
 			board.snakes[0].move()
-
-			board.snakes.forEach(function(e){
-				
-			});
 		}, DELAY);
+
+		board.snakes.forEach(function(e){
+			var li = document.createElement('li');
+
+
+			console.log(e);
+
+			li.textContent = e.name;
+			$('#scoreboard').append(li);
+		});
 
 		$('body').keydown(function(e) {
 			let snake = board.snakes[0];
