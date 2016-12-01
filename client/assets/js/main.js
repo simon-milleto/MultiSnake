@@ -10,5 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let draw = new Draw(context);
 
     draw.snake();
+    draw.apple();
 
 });
