@@ -18,13 +18,13 @@ export default class Board {
 	newSnake(x, y){
 
 
-		let snake = new Snake(this.context,x,y);
+		let snake = new Snake(x, y);
 		snake.draw();
 		this.snakes.push(snake);
 	}
 
 	newApple(x,y){
-		let apple = new Apple(this.context,x,y);
+		let apple = new Apple(x, y);
 		apple.draw();
 		this.apples.push(apple);
 	}
