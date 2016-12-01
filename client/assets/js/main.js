@@ -1,15 +1,12 @@
 "use strict";
 
-import createCanvasGame from './createCanvasGame.js';
+import Board from './board';
 import Draw from './draw';
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    let context = createCanvasGame();
+	let board = new Board(1600, 900);
 
-    let draw = new Draw(context);
-
-    draw.snake();
-    draw.apple();
+	let draw = new Draw(board.context);
 
 });
