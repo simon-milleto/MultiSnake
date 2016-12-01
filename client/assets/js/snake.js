@@ -8,7 +8,7 @@ export default class Snake {
 		this.context = context;
 		this.x = x;
 		this.y = y;
-        this.score = 0;
+		this.score = 0;
 		this.direction ="right";
 
 		this.bodyParts = [];
