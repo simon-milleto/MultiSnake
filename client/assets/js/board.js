@@ -29,7 +29,6 @@ export default class Board {
 	}
 	newSnake(x, y) {
 		if(this.snakes.length < 10){
-			console.log(this.snakes.length);
 			let snake = new Snake(this.context, x, y,this.getAvailableColor());
 			snake.draw();
 
