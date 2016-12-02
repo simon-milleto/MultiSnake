@@ -24,3 +24,5 @@ Les joueurs contrôlent une longue et fine ligne semblable à un serpent, qui do
 - La taille du terrain de jeu est limité dans un rectangle de 1500x900px.
 - La couleur de fond sera noir
 - Les pommes en rouge
+
+![Board grid](/docs/images/multisnake_board.png?raw=true "Board grid")
