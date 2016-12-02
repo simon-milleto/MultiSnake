@@ -21,6 +21,6 @@ Les joueurs contrôlent une longue et fine ligne semblable à un serpent, qui do
 - Le joueur à la possibilité de rentrer un pseudo (Si le joueur ne rentre rien on lui assigne un pseudo aléatoirement)
 
 ##Map
-- La taille du terrain de jeu est limité dans un rectangle de 1600x900px.
+- La taille du terrain de jeu est limité dans un rectangle de 1500x900px.
 - La couleur de fond sera noir
 - Les pommes en rouge
