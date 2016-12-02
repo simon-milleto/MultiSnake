@@ -8,7 +8,6 @@ const DELAY = 150;
 
 export default class Board {
 
-	// A snake store his position (x and y) and his score
 	constructor() {
 		this.context = createCanvasGame();
 		this.snakes = [];
@@ -26,16 +25,17 @@ export default class Board {
 			"#F2385A"
 		];
 	}
+
 	newSnake(x, y) {
         if(this.snakes.length < 10){
             let snake = new Snake(this.context, x, y, this.getAvailableColor());
             snake.draw();
 
-        // Temp : Simulate 4 bodyParts on the snake
+        // TEMP: ADD FOUR BODY PARTS TO THE SNAKE FOR TEST PURPOSES
+		snake.addBodyPart(x - 30, y);
 		snake.addBodyPart(x - 60, y);
-		snake.addBodyPart(x - 120, y);
-		snake.addBodyPart(x - 180, y);
-        // End Temp
+		snake.addBodyPart(x - 90, y);
+        // END TEMP
 
             this.snakes.push(snake);
         } else {
@@ -64,8 +64,11 @@ export default class Board {
 	}
 
 	render(board) {
-		setInterval(function(){
+		setInterval(function () {
+            // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			board.snakes[0].move();
+			// END TEMP
+
 			board.checkSnakeWithAppleCollision();
 		}, DELAY);
 
