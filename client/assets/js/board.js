@@ -31,11 +31,11 @@ export default class Board {
             let snake = new Snake(this.context, x, y, this.getAvailableColor());
             snake.draw();
 
-            // Temp : Simulate 4 bodyParts on the snake
-            snake.addBodyPart(x - 60, y);
-            snake.addBodyPart(x - 120, y);
-            snake.addBodyPart(x - 180, y);
-            // End Temp
+        // Temp : Simulate 4 bodyParts on the snake
+		snake.addBodyPart(x - 60, y);
+		snake.addBodyPart(x - 120, y);
+		snake.addBodyPart(x - 180, y);
+        // End Temp
 
             this.snakes.push(snake);
         } else {
@@ -43,12 +43,12 @@ export default class Board {
         }
     }
 
-    newApple(x, y) {
-        let apple = new Apple(this.context, x, y);
-        apple.draw();
+	newApple(x, y) {
+		let apple = new Apple(this.context, x, y);
+		apple.draw();
 
-        this.apples.push(apple);
-    }
+		this.apples.push(apple);
+	}
 
 	getAvailableColor() {
 		let snakeColor = this.snakes.map(function (snake){
@@ -69,27 +69,27 @@ export default class Board {
 			board.checkSnakeWithAppleCollision();
 		}, DELAY);
 
-        $('body').keydown(function (e) {
-            let snake = board.snakes[0];
-            if (e.keyCode === 37 && snake.direction !== 'right') {
-                snake.direction = 'left';
-            }
-            else if (e.keyCode === 38 && snake.direction !== 'down') {
-                snake.direction = 'up';
-            }
-            else if (e.keyCode === 39 && snake.direction !== 'left') {
-                snake.direction = 'right';
-            }
-            else if (e.keyCode === 40 && snake.direction !== 'up') {
-                snake.direction = 'down';
-            }
-        });
-    }
+		$('body').keydown(function (e) {
+			let snake = board.snakes[0];
+			if (e.keyCode === 37 && snake.direction !== 'right') {
+				snake.direction = 'left';
+			}
+			else if (e.keyCode === 38 && snake.direction !== 'down') {
+				snake.direction = 'up';
+			}
+			else if (e.keyCode === 39 && snake.direction !== 'left') {
+				snake.direction = 'right';
+			}
+			else if (e.keyCode === 40 && snake.direction !== 'up') {
+				snake.direction = 'down';
+			}
+		});
+	}
 
-    checkSnakeWithAppleCollision() {
-        this.snakes.forEach((snake) => {
-            snake.checkCollisionWithApples(this.apples);
-        });
-    }
+	checkSnakeWithAppleCollision() {
+		this.snakes.forEach((snake) => {
+			snake.checkCollisionWithApples(this.apples);
+		});
+	}
 
 }
