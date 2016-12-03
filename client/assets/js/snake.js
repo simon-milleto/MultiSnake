@@ -13,10 +13,10 @@ export default class Snake {
 		this.x = x;
 		this.y = y;
 		this.score = 0;
-		// TEMP: SET THE START DIRECTION TO RIGHT FOR TEST PURPOSES
+        // TEMP: SET THE START DIRECTION TO RIGHT FOR TEST PURPOSES
 		this.direction = 'right';
-		// END TEMP
-        this.color = color;
+        // END TEMP
+		this.color = color;
 		this.width = SNAKE_WIDTH;
 		this.height = SNAKE_HEIGHT;
 
@@ -24,12 +24,11 @@ export default class Snake {
 	}
 
 	draw() {
-		this.addBodyPart(this.x, this.y);
+		this.addBodyPart();
 	}
 
-	addBodyPart(x, y) {
-		let snakePart = new SnakePart(this.context, x, y, this.width, this.height, this.color);
-		snakePart.draw();
+	addBodyPart() {
+		let snakePart = new SnakePart(this.context, this.x, this.y, this.width, this.height, this.color);
 
 		this.bodyParts.push(snakePart);
 	}
@@ -111,7 +110,6 @@ export default class Snake {
 
 	checkCollisionWithApples(apples) {
 		let firstBodyPart = this.bodyParts[0];
-		let lastBodyPart = this.bodyParts[this.bodyParts.length - 1];
 
 		apples.forEach((apple, index) => {
 			if (firstBodyPart.x < apple.x + apple.radius * 2 &&
@@ -122,8 +120,7 @@ export default class Snake {
 				apples.splice(index, 1);
 				this.addScore();
 
-				console.log(this.score);
-				this.addBodyPart(lastBodyPart.x - (this.width + BODY_PART_MARGIN), lastBodyPart.y);
+				this.addBodyPart();
 
 			}
 		});

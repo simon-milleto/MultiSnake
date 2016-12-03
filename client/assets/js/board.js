@@ -3,6 +3,7 @@
 import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
 import Apple from './apple';
+import $ from 'jquery';
 
 const DELAY = 150;
 
@@ -51,23 +52,22 @@ export default class Board {
 	}
 
 	getAvailableColor() {
-		let snakeColor = this.snakes.map(function (snake){
+		let snakeColor = this.snakes.map(function (snake) {
 			return snake.color;
 		});
 
-		let availableColor =  this.color.find(function (c) {
-			if(!snakeColor.includes(c)){
+		return this.color.find(function (c) {
+			if (!snakeColor.includes(c)) {
 				return c;
 			}
 		});
-		return availableColor;
 	}
 
 	render(board) {
 		setInterval(function () {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			board.snakes[0].move();
-			// END TEMP
+            // END TEMP
 
 			board.checkSnakeWithAppleCollision();
 		}, DELAY);

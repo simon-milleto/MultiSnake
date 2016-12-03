@@ -1,8 +1,6 @@
 'use strict';
 
-global.jQuery = require('jquery');
 import Board from './board';
-import createCanvasGame from './createCanvasGame.js';
 import server from './sendToServer.js';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -28,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	server.sendDeleteUser();
 	server.sendMove();
 
-	createCanvasGame();
 	board.render(board);
 
 });
