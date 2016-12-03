@@ -24,13 +24,17 @@ export default class Snake {
 	}
 
 	draw() {
-		this.addBodyPart();
+		let snake = this.addBodyPart(this.x, this.y);
+
+		snake.draw();
 	}
 
 	addBodyPart() {
 		let snakePart = new SnakePart(this.context, this.x, this.y, this.width, this.height, this.color);
 
 		this.bodyParts.push(snakePart);
+
+		return snakePart;
 	}
 
 	moveDown() {

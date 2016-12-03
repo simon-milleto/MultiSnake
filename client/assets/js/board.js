@@ -32,17 +32,11 @@ export default class Board {
             let snake = new Snake(this.context, x, y, this.getAvailableColor());
             snake.draw();
 
-        // TEMP: ADD FOUR BODY PARTS TO THE SNAKE FOR TEST PURPOSES
-		snake.addBodyPart(x - 30, y);
-		snake.addBodyPart(x - 60, y);
-		snake.addBodyPart(x - 90, y);
-        // END TEMP
-
             this.snakes.push(snake);
         } else {
             console.error('Error : only 10 snakes can be on the board');
         }
-    }
+	}
 
 	newApple(x, y) {
 		let apple = new Apple(this.context, x, y);
