@@ -29,8 +29,12 @@ socket.on('client ID', function(id){
 	clientId = id;
 });
 
+socket.on('connect message', function() {
+	serverObject.emit('connection');
+});
+
 socket.on('disconnect', function() {
-	serverObject.emit('disconnect');
+	serverObject.emit('disconnection');
 });
 
 window.addEventListener('offline', function() {
