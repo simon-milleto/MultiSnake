@@ -46,6 +46,11 @@ export default class Snake {
 
 		lastBodyPart.y = firstBodyPart.y + this.height + BODY_PART_MARGIN;
 		lastBodyPart.x = firstBodyPart.x;
+
+		if (firstBodyPart.y + this.height >= this.context.canvas.clientHeight - BODY_PART_MARGIN) {
+			lastBodyPart.y = 0;
+		}
+
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
@@ -59,6 +64,11 @@ export default class Snake {
 
 		lastBodyPart.y = firstBodyPart.y - this.height - BODY_PART_MARGIN;
 		lastBodyPart.x = firstBodyPart.x;
+
+		if (firstBodyPart.y <= 0) {
+			lastBodyPart.y = this.context.canvas.clientHeight - (this.height + BODY_PART_MARGIN);
+		}
+
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
@@ -72,6 +82,11 @@ export default class Snake {
 
 		lastBodyPart.y = firstBodyPart.y;
 		lastBodyPart.x = firstBodyPart.x - this.width - BODY_PART_MARGIN;
+
+		if (firstBodyPart.x <= 0) {
+			lastBodyPart.x = this.context.canvas.clientWidth - (this.width + BODY_PART_MARGIN);
+		}
+
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
@@ -85,6 +100,11 @@ export default class Snake {
 
 		lastBodyPart.y = firstBodyPart.y;
 		lastBodyPart.x = firstBodyPart.x + this.width + BODY_PART_MARGIN;
+
+		if (firstBodyPart.x + this.width >= this.context.canvas.clientWidth) {
+			lastBodyPart.x = 0;
+		}
+
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
