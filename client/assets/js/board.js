@@ -62,6 +62,7 @@ export default class Board {
 		setInterval(() => {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			this.snakes[0].move(this);
+            this.checkCollisionWithYourself();
             // END TEMP
 		}, DELAY);
 
@@ -84,6 +85,28 @@ export default class Board {
 		});
 	}
 
+    checkCollisionWithYourself() {
+		let snake = this.snakes[0];
+        let firstBodyPart = snake.bodyParts[0];
 
+        snake.bodyParts.forEach((bodyPart, index) => {
+            if (index === 0) {
+                return;
+            }
+
+            if (firstBodyPart.x < bodyPart.x + bodyPart.width &&
+                firstBodyPart.x + firstBodyPart.width > bodyPart.x &&
+                firstBodyPart.y < bodyPart.y + bodyPart.height &&
+                firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
+
+                this.endGame();
+
+            }
+        });
+    }
+
+	endGame() {
+		console.log("PERDU");
+	}
 
 }
