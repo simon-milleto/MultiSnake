@@ -9,7 +9,6 @@ const DELAY = 150;
 
 export default class Board {
 
-	// A snake store his position (x and y) and his score
 	constructor() {
 		this.context = createCanvasGame();
 		this.snakes = [];
@@ -27,21 +26,16 @@ export default class Board {
 			"#F2385A"
 		];
 	}
+
 	newSnake(x, y) {
-		if(this.snakes.length < 10){
-			let snake = new Snake(this.context, x, y,this.getAvailableColor());
-			snake.draw();
+        if(this.snakes.length < 10){
+            let snake = new Snake(this.context, x, y, this.getAvailableColor());
+            snake.draw();
 
-		// Temp : Simulate 4 bodyParts on the snake
-			snake.addBodyPart(x - 60, y);
-			snake.addBodyPart(x - 120, y);
-			snake.addBodyPart(x - 180, y);
-		// End Temp
-
-			this.snakes.push(snake);
-		}else{
-			console.error('Error : only 10 snakes can be on the board');
-		}
+            this.snakes.push(snake);
+        } else {
+            console.error('Error : only 10 snakes can be on the board');
+        }
 	}
 
 	newApple(x, y) {
@@ -51,33 +45,34 @@ export default class Board {
 		this.apples.push(apple);
 	}
 
-	getAvailableColor(){
-		let snakeColor = this.snakes.map(function(snake){
+	getAvailableColor() {
+		let snakeColor = this.snakes.map(function (snake) {
 			return snake.color;
 		});
 
-		let availableColor =  this.color.find(function(c) {
-			if(!snakeColor.includes(c)){
+		return this.color.find(function (c) {
+			if (!snakeColor.includes(c)) {
 				return c;
 			}
 		});
-		return availableColor;
 	}
 
-	render(board) {
-		setInterval(function(){
-			board.snakes[0].move();
+	render() {
+		setInterval(() => {
+            // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
+			this.snakes[0].move(this);
+            // END TEMP
 		}, DELAY);
 
-		$('body').keydown(function(e) {
-			let snake = board.snakes[0];
-			if(e.keyCode === 37 && snake.direction !== 'right') {
+		$('body').keydown((e) => {
+			let snake = this.snakes[0];
+			if (e.keyCode === 37 && snake.direction !== 'right') {
 				snake.direction = 'left';
 			}
-			else if(e.keyCode === 38 && snake.direction !== 'down') {
+			else if (e.keyCode === 38 && snake.direction !== 'down') {
 				snake.direction = 'up';
 			}
-			else if(e.keyCode === 39 && snake.direction !== 'left') {
+			else if (e.keyCode === 39 && snake.direction !== 'left') {
 				snake.direction = 'right';
 			}
 			else if (e.keyCode === 40 && snake.direction !== 'up') {
