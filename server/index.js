@@ -1,12 +1,16 @@
-var express = require('express');
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+'use strict';
+
+const path = require('path')
+
+const express = require('express');
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 const totalDuration = 5000;
 const gameDuration = 3000;
 
-app.use(express.static('../client'));
+app.use(express.static(path.join(__dirname, '..', 'client')));
 
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/index.html');

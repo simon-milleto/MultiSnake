@@ -8,13 +8,20 @@ A multiplayer [Snake](https://en.wikipedia.org/wiki/Snake_(video_game)) created 
 
 ## Install
 
-```sh
-npm install
-npm install nodemon -g
+`npm install`
 
-npm run bundle-client
-nodemon server/index.js
-```
+## Start
+
+`npm start`
+
+## dev
+
+In different windows:
+
+````sh
+npm run watch
+npm run serve
+````
 
 # Licence
 
