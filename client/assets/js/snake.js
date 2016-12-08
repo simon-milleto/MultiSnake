@@ -120,6 +120,7 @@ export default class Snake {
 
 	move(board) {
 		this.checkCollisionWithApples(board.apples);
+        this.checkCollisionWithYourself();
 
 		if (this.direction === 'right') {
 			this.moveRight();
@@ -152,4 +153,30 @@ export default class Snake {
 			}
 		});
 	}
+
+    checkCollisionWithYourself() {
+        let firstBodyPart = this.bodyParts[0];
+
+        this.bodyParts.forEach((bodyPart, index) => {
+        	if (index === 0) {
+        		return;
+			}
+
+            if (firstBodyPart.x < bodyPart.x + bodyPart.width &&
+                firstBodyPart.x + firstBodyPart.width > bodyPart.x &&
+                firstBodyPart.y < bodyPart.y + bodyPart.height &&
+                firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
+
+        		this.endGame();
+
+            }
+        });
+    }
+
+    endGame() {
+        this.bodyParts.forEach((bodyPart, index) => {
+            bodyPart.remove();
+        })
+	}
+
 }
