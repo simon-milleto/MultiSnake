@@ -12,9 +12,10 @@
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
       canvas{z-index:10; }
-      #scoreboard{background-color:rgba(20,20,20,0.5);width:200px;position:fixed;right:0;top:0;height:400px;z-index:20;list-style-type: none;}
-      #scoreboard h2{color:white;text-align: center;padding:10px 0;}
-      #scoreboard li{color:white;width:100%;padding:10px 0;text-align: center;}
+      #scoreboard{position:fixed;right:0;top:0;}
+      #userlist{list-style-type: none;height:400px;background-color:rgba(20,20,20,0.5);width:200px;}
+      #scoreboard h2{color:white;text-align: center;padding:10px 0;background-color: rgba(20,20,20,0.5);}
+      #userlist li{color:white;width:100%;padding:10px;}
     </style>
     <script src="assets/js/bundle.js"></script>
   </head>
@@ -24,7 +25,10 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
-    <ul id="scoreboard"><h2>ScoreBoard :</h2></ul>
+    <div id="scoreboard">
+      <h2>ScoreBoard :</h2>
+      <ul id="userlist"></ul>
+    </div>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>

@@ -3,6 +3,7 @@
 import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
 import Apple from './apple';
+import scoreBoard from './scoreboard';
 import $ from 'jquery';
 
 const DELAY = 150;
@@ -40,15 +41,7 @@ export default class Board {
 			board.snakes[0].move();
 		}, DELAY);
 
-		board.snakes.forEach(function(e){
-			var li = document.createElement('li');
-
-
-			console.log(e);
-
-			li.textContent = e.name;
-			$('#scoreboard').append(li);
-		});
+		scoreBoard(board.snakes);
 
 		$('body').keydown(function(e) {
 			let snake = board.snakes[0];

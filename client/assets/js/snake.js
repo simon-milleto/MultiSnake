@@ -21,14 +21,6 @@ export default class Snake {
 		this.bodyParts = [];
 		this.name = name;
 	}
-	
-	getName(){
-		return this.name;
-	}
-	getScore(){
-		return this.score;
-	}
-
 
 	draw() {
 		this.addBodyPart(this.x, this.y);
