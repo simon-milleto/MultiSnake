@@ -57,17 +57,15 @@ export default class Board {
 		});
 	}
 
-	render(board) {
-		setInterval(function () {
+	render() {
+		setInterval(() => {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
-			board.snakes[0].move(this);
+			this.snakes[0].move(this);
             // END TEMP
-
-			board.checkSnakeWithAppleCollision();
 		}, DELAY);
 
-		$('body').keydown(function (e) {
-			let snake = board.snakes[0];
+		$('body').keydown((e) => {
+			let snake = this.snakes[0];
 			if (e.keyCode === 37 && snake.direction !== 'right') {
 				snake.direction = 'left';
 			}

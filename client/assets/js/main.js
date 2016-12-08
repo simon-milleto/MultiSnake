@@ -26,6 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	server.sendDeleteUser();
 	server.sendMove();
 
-	board.render(board);
+	board.render();
 
 });
