@@ -8,7 +8,7 @@ const BODY_PART_MARGIN = 5;
 
 export default class Snake {
 
-	constructor(context, x, y, color) {
+	constructor(context, x, y, color, name) {
 		this.context = context;
 		this.x = x;
 		this.y = y;
@@ -21,6 +21,7 @@ export default class Snake {
 		this.height = SNAKE_HEIGHT;
 
 		this.bodyParts = [];
+		this.name = name;
 	}
 
 	draw() {
@@ -131,5 +132,4 @@ export default class Snake {
 			}
 		});
 	}
-
 }

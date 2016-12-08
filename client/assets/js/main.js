@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	let board = new Board();
 
+
     // TEMP: CREATE TWO SNAKES FOR TEST PURPOSES
-	board.newSnake(0, 60);
-	board.newSnake(420, 330);
+	board.newSnake(0, 60, 'Jean-Mich');
+	board.newSnake(420, 330, 'Xx-JeanKevin33-xX');
     // END TEMP
 
     // TEMP: CREATE SEVEN APPLES FOR TEST PURPOSES

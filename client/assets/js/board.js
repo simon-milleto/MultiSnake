@@ -3,6 +3,7 @@
 import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
 import Apple from './apple';
+import scoreBoard from './scoreboard';
 import $ from 'jquery';
 
 const DELAY = 150;
@@ -27,9 +28,9 @@ export default class Board {
 		];
 	}
 
-	newSnake(x, y) {
+	newSnake(x, y, name) {
         if(this.snakes.length < 10){
-            let snake = new Snake(this.context, x, y, this.getAvailableColor());
+            let snake = new Snake(this.context, x, y, this.getAvailableColor(), name);
             snake.draw();
 
             this.snakes.push(snake);
@@ -63,6 +64,8 @@ export default class Board {
 			this.snakes[0].move(this);
             // END TEMP
 		}, DELAY);
+
+		scoreBoard(this.snakes);
 
 		$('body').keydown((e) => {
 			let snake = this.snakes[0];
