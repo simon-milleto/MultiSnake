@@ -28,16 +28,20 @@ export default class Board {
 		];
 	}
 	newSnake(x, y) {
-		let snake = new Snake(this.context, x, y,this.getAvailableColor());
-		snake.draw();
+		if(this.snakes.length < 10){
+			let snake = new Snake(this.context, x, y,this.getAvailableColor());
+			snake.draw();
 
 		// Temp : Simulate 4 bodyParts on the snake
-		snake.addBodyPart(x - 60, y);
-		snake.addBodyPart(x - 120, y);
-		snake.addBodyPart(x - 180, y);
+			snake.addBodyPart(x - 60, y);
+			snake.addBodyPart(x - 120, y);
+			snake.addBodyPart(x - 180, y);
 		// End Temp
 
-		this.snakes.push(snake);
+			this.snakes.push(snake);
+		}else{
+			console.error('Error : only 10 snakes can be on the board');
+		}
 	}
 
 	newApple(x, y) {
