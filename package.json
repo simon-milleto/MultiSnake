@@ -4,17 +4,20 @@
   "description": "A multiplayer Snake created by ECV Digitale Dev Master students.",
   "main": "index.html",
   "dependencies": {
-    "browserify": "^13.1.1",
+    "event-emitter": "^0.3.4",
     "express": "^4.14.0",
     "jquery": "^3.1.1",
     "rollupify": "^0.3.5",
     "socket.io": "^1.5.1"
   },
   "devDependencies": {
+    "browserify": "^13.1.1",
+    "rollupify": "^0.3.5",
     "watchify": "^3.7.0"
   },
   "scripts": {
-    "bundle-client": "watchify client/assets/js/main.js -o client/assets/js/bundle.js -t rollupify"
+    "bundle-client": "watchify client/assets/js/main.js -o client/assets/js/bundle.js -t rollupify",
+    "eslint": "eslint ./client/assets/js/**/*.js"
   },
   "repository": {
     "type": "git",
