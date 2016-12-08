@@ -65,7 +65,7 @@ export default class Board {
             // END TEMP
 		}, DELAY);
 
-		scoreBoard(board.snakes);
+		scoreBoard(this.snakes);
 
 		$('body').keydown((e) => {
 			let snake = this.snakes[0];
