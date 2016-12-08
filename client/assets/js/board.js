@@ -29,14 +29,14 @@ export default class Board {
 	}
 
 	newSnake(x, y, name) {
-        if(this.snakes.length < 10){
-            let snake = new Snake(this.context, x, y, this.getAvailableColor(), name);
-            snake.draw();
+		if(this.snakes.length < 10){
+			let snake = new Snake(this.context, x, y, this.getAvailableColor(), name);
+			snake.draw();
 
-            this.snakes.push(snake);
-        } else {
-            console.error('Error : only 10 snakes can be on the board');
-        }
+			this.snakes.push(snake);
+		} else {
+			console.error('Error : only 10 snakes can be on the board');
+		}
 	}
 
 	newApple(x, y) {

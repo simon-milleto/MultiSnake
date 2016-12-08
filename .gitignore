@@ -2,6 +2,7 @@
 client/assets/js/bundle.js
 
 node_modules
+npm-debug.log
 
 .idea
 
