@@ -97,7 +97,9 @@ export default class Snake {
 		this.bodyParts.splice(0, 0, this.bodyParts.splice(this.bodyParts.length - 1, 1)[0]);
 	}
 
-	move() {
+	move(board) {
+		this.checkCollisionWithApples(board.apples);
+
 		if (this.direction === 'right') {
 			this.moveRight();
 		}

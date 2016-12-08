@@ -60,7 +60,7 @@ export default class Board {
 	render(board) {
 		setInterval(function () {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
-			board.snakes[0].move();
+			board.snakes[0].move(this);
             // END TEMP
 
 			board.checkSnakeWithAppleCollision();
@@ -80,12 +80,6 @@ export default class Board {
 			else if (e.keyCode === 40 && snake.direction !== 'up') {
 				snake.direction = 'down';
 			}
-		});
-	}
-
-	checkSnakeWithAppleCollision() {
-		this.snakes.forEach((snake) => {
-			snake.checkCollisionWithApples(this.apples);
 		});
 	}
 
