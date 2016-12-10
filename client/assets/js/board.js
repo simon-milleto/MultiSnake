@@ -1,4 +1,5 @@
 'use strict';
+const BACKGROUND_COLOR = '#000000';
 
 import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
@@ -86,27 +87,40 @@ export default class Board {
 	}
 
     checkCollisionWithYourself() {
-		let snake = this.snakes[0];
-        let firstBodyPart = snake.bodyParts[0];
+		//let snake = this.snakes[0];
 
-        snake.bodyParts.forEach((bodyPart, index) => {
-            if (index === 0) {
-                return;
-            }
+        this.snakes.forEach((snake, i) => {
 
-            if (firstBodyPart.x < bodyPart.x + bodyPart.width &&
-                firstBodyPart.x + firstBodyPart.width > bodyPart.x &&
-                firstBodyPart.y < bodyPart.y + bodyPart.height &&
-                firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
+            let firstBodyPart = snake.bodyParts[0];
+            snake.bodyParts.forEach((bodyPart, index) => {
+                if (index === 0) {
+                    return;
+                }
 
-                this.endGame();
+                if (firstBodyPart.x < bodyPart.x + bodyPart.width &&
+                    firstBodyPart.x + firstBodyPart.width > bodyPart.x &&
+                    firstBodyPart.y < bodyPart.y + bodyPart.height &&
+                    firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
 
-            }
-        });
+                	this.removeSnakeFromArray(i);
+                }
+            });
+		})
     }
 
-	endGame() {
-		console.log("PERDU");
+    removeSnakeFromArray(i) {
+		this.snakes[i].bodyParts.forEach((part, index) => {
+			this.removeSnakeFromScreen(part.x, part.y, part.width)
+		})
+		this.snakes.splice(i, 1);
+		console.log("THANKS, BRAM !")
 	}
 
+	removeSnakeFromScreen(x, y, width) {
+        this.context.beginPath();
+        this.context.rect(x, y, width, width);
+        this.context.fillStyle = BACKGROUND_COLOR;
+        this.context.fill();
+        this.context.closePath();
+	}
 }
