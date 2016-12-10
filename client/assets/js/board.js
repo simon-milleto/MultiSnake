@@ -110,17 +110,9 @@ export default class Board {
 
     removeSnakeFromArray(i) {
 		this.snakes[i].bodyParts.forEach((part, index) => {
-			this.removeSnakeFromScreen(part.x, part.y, part.width)
-		})
+			this.snakes[i].removeSnakeFromScreen(part.x, part.y, part.width)
+		});
 		this.snakes.splice(i, 1);
-		console.log("THANKS, BRAM !")
 	}
 
-	removeSnakeFromScreen(x, y, width) {
-        this.context.beginPath();
-        this.context.rect(x, y, width, width);
-        this.context.fillStyle = BACKGROUND_COLOR;
-        this.context.fill();
-        this.context.closePath();
-	}
 }

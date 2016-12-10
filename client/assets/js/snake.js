@@ -1,4 +1,5 @@
 'use strict';
+const BACKGROUND_COLOR = '#000000';
 
 import SnakePart from './snakePart';
 
@@ -26,13 +27,14 @@ export default class Snake {
 
 	draw() {
 		let snake = this.addBodyPart(this.x, this.y);
+        this.addBodyPart(this.x, this.y);
+        this.addBodyPart(this.x, this.y);
 
 		snake.draw();
 	}
 
 	addBodyPart() {
 		let snakePart = new SnakePart(this.context, this.x, this.y, this.width, this.height, this.color);
-
 		this.bodyParts.push(snakePart);
 
 		return snakePart;
@@ -152,4 +154,12 @@ export default class Snake {
 			}
 		});
 	}
+
+    removeSnakeFromScreen(x, y, width) {
+        this.context.beginPath();
+        this.context.rect(x, y, width, width);
+        this.context.fillStyle = BACKGROUND_COLOR;
+        this.context.fill();
+        this.context.closePath();
+    }
 }
