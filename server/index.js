@@ -7,15 +7,10 @@ const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+import * as constant from '../client/assets/js/constant';
 import Board from '../client/assets/js/board.js';
 
-const totalDuration = 5000;
-const gameDuration = 3000;
-
-var applesOnBoard = [];
 var b = new Board();
-
-var generateApple = require('./generateApple');
 
 app.use(express.static(path.join(__dirname, '..', 'client')));
 
@@ -38,12 +33,15 @@ io.on('connection', socket => {
 setInterval(function() {
 	io.emit('start', 'Démarrage de la partie');
 
-	applesOnBoard = generateApple(b, applesOnBoard, 5);
-	
+	while(b.apples.length < constant.DEFAULT_APPLES_NUMBER){
+		let apple = b.generateApple();
+		io.emit('new_apple', apple);
+	}
+
 	setTimeout(function() {
 		io.emit('end', 'Fin de la partie');
-	}, gameDuration);
-}, totalDuration);
+	}, constant.GAME_DURATION);
+}, constant.TOTAL_DURATION);
 
 http.listen(3000, () => {
 	console.log('listening on *:3000');

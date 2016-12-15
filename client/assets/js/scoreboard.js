@@ -6,12 +6,12 @@ export default function scoreBoard(snakes) {
 		li.css( "color", e.color);
 		li.append(
 			$('<span>', {
-			    class: 'name',
-			    text: e.name
+				class: 'name',
+				text: e.name
 			}),
 			$('<span>', {
-			    class: 'score',
-			    text: e.score
+				class: 'score',
+				text: e.score
 			})
 		);
 		$("#userlist").append(li);

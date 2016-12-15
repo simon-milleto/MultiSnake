@@ -1,6 +1,5 @@
 'use strict';
 
-//import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
 import Apple from './apple';
 import scoreBoard from './scoreboard';
@@ -44,6 +43,15 @@ export default class Board {
 		this.apples.push(apple);
 
 		return apple;
+	}
+
+	generateApple(){
+
+		var x = Math.floor(Math.random() * constant.CANVAS_WIDTH/30) * 30 + 15;
+		var y = Math.floor(Math.random() * constant.CANVAS_HEIGHT/30) * 30 + 15;
+
+		return this.newApple(x,y);
+
 	}
 
 	getAvailableColor() {
@@ -99,8 +107,7 @@ export default class Board {
                     firstBodyPart.x + firstBodyPart.width > bodyPart.x &&
                     firstBodyPart.y < bodyPart.y + bodyPart.height &&
                     firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
-
-                	this.removeSnakeFromArray(i);
+					this.removeSnakeFromArray(i);
 				}
 			});
 		});

@@ -7,3 +7,11 @@ export const DELAY = 150;
 export const SNAKE_WIDTH = 25;
 export const SNAKE_HEIGHT = 25;
 export const BODY_PART_MARGIN = 5;
+
+export const DEFAULT_APPLES_NUMBER = 5;
+
+export const CANVAS_WIDTH = 1200;
+export const CANVAS_HEIGHT = 690;
+
+export const TOTAL_DURATION = 5000;
+export const GAME_DURATION = 3000;
