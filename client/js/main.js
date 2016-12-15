@@ -23,20 +23,41 @@ document.addEventListener('DOMContentLoaded', function () {
 			/* Random place on board for testing purpose */
 			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/constant.GRID_SIZE)) * constant.GRID_SIZE;
 			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/constant.GRID_SIZE)) * constant.GRID_SIZE;
-			board.newSnake(long, lat, name);
+			let snake = board.newSnake(long, lat, name);
 
 			server.on('new_apple', function(data){
-
 				let apple = board.newApple(data.x, data.y);
 				apple.draw();
 			});
 
+			server.on('setDirection', data => {
+				board.snakes.forEach(snake => {
+					if (snake.x === data.snake.x && snake.y === data.snake.y) {
+						snake.changeDirecion(data.direction);
+					}
+				});
+			});
 
 			server.sendNewUser();
 			server.sendDeleteUser();
 			server.sendMove();
 
 			board.render();
+
+			$('body').keydown((e) => {
+				if (e.keyCode === 37 && snake.direction !== 'right') {
+					server.changeDirection(snake, 'left');
+				}
+				else if (e.keyCode === 38 && snake.direction !== 'down') {
+					server.changeDirection(snake, 'up');
+				}
+				else if (e.keyCode === 39 && snake.direction !== 'left') {
+					server.changeDirection(snake, 'right');
+				}
+				else if (e.keyCode === 40 && snake.direction !== 'up') {
+					server.changeDirection(snake, 'down');
+				}
+			});
 		});
 	});
 
