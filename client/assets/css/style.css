@@ -11,6 +11,9 @@ html, body {
 
 body {
     font: 13px Helvetica, Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 form {
@@ -76,20 +79,18 @@ section {
 .score{
     float:right;
 }
-#form-name{
+#name{
     width:300px;
     height:100px;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    bottom: initial;
 }
-#form-name.filled{
-    display:none;
-}
-#form-name #name{
+#name input{
     width:100%;
 }
-#form-name input[type="submit"]{
+#name button{
     width:50px;
     margin:auto;
     display:block;
