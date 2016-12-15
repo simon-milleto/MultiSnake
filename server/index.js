@@ -5,6 +5,10 @@ var io = require('socket.io')(http);
 
 const totalDuration = 5000;
 const gameDuration = 3000;
+var applesOnBoard = [];
+
+var generateApple = require('./generateApple');
+var board = require('board');
 
 app.use(express.static('../client'));
 
@@ -23,9 +27,12 @@ io.on('connection', socket => {
 		io.emit('disconnect message');
 	});
 });
-	
+
 setInterval(function() {
 	io.emit('start', 'Démarrage de la partie');
+
+	applesOnBoard = generateApple(board, applesOnBoard, 5);
+
 	setTimeout(function() {
 		io.emit('end', 'Fin de la partie');
 	}, gameDuration);

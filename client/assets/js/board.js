@@ -28,14 +28,17 @@ export default class Board {
 	}
 
 	newSnake(x, y) {
-        if(this.snakes.length < 10){
-            let snake = new Snake(this.context, x, y, this.getAvailableColor());
-            snake.draw();
+		if(this.snakes.length < 10){
+			let snake = new Snake(this.context, x, y, this.getAvailableColor());
+			snake.draw();
 
-            this.snakes.push(snake);
-        } else {
-            console.error('Error : only 10 snakes can be on the board');
-        }
+			this.snakes.push(snake);
+
+			return snake;
+		} else {
+			console.error('Error : only 10 snakes can be on the board');
+			return false;
+		}
 	}
 
 	newApple(x, y) {
@@ -43,6 +46,7 @@ export default class Board {
 		apple.draw();
 
 		this.apples.push(apple);
+		return apple;
 	}
 
 	getAvailableColor() {
@@ -80,5 +84,6 @@ export default class Board {
 			}
 		});
 	}
+
 
 }
