@@ -3,6 +3,7 @@
 import Board from './board';
 import server from './sendToServer.js';
 import createCanvasGame from './createCanvasGame.js';
+import * as constant from './constant';
 import $ from 'jquery';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -18,10 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			let context = createCanvasGame();
 			let board = new Board(context);
 
-        /* Random place on board for testing purpose */
-			let long = Math.floor(Math.random() * 1000);
-			let lat = Math.floor(Math.random() * 500);
-			board.newSnake(long, lat);
+			/* Random place on board for testing purpose */
+			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/30)) * 30;
+			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/30)) * 30;
+			board.newSnake(long, lat, name);
 
 			server.on('new_apple', function(data){
 
@@ -39,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	server.on('disconnection', function(){
-		// Destroy Snake
+        // Destroy Snake
 	});
 
 });
