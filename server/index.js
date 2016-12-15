@@ -29,6 +29,10 @@ io.on('connection', socket => {
 	socket.on('disconnect', () => {
 		io.emit('disconnect message');
 	});
+
+	socket.on('changeDirection', (data) => {
+		io.emit('setDirection', data);
+	});
 });
 
 setInterval(function() {
