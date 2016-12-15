@@ -103,7 +103,7 @@ export default class Snake {
 		lastBodyPart.y = firstBodyPart.y;
 		lastBodyPart.x = firstBodyPart.x + this.width + BODY_PART_MARGIN;
 
-		if (firstBodyPart.x + this.width >= this.context.canvas.clientWidth) {
+		if (lastBodyPart.x >= this.context.canvas.clientWidth) {
 			lastBodyPart.x = 0;
 		}
 
