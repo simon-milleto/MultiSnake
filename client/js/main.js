@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			board.render();
 
 			server.on('disconnect', function(){
-				board.shouldRender = false;
+				board.stopRendering();
 				displayDisconnectMessage();
 
 			});
