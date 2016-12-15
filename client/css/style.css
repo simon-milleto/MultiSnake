@@ -36,11 +36,6 @@ section {
     background: #eee;
 }
 #scoreboard{
-<<<<<<< HEAD:client/assets/css/style.css
-    background-color:rgba(20,20,20,0.3);
-=======
-    background-color:rgba(20,20,20,0.9);
->>>>>>> 97100e290d41fb761e0897dd3183e08a64dd1fb1:client/css/style.css
     display:flex;
     height:400px;
     width:250px;
@@ -49,9 +44,7 @@ section {
 #player-list{
     list-style-type: none;
     background-color: white;
-    width: 160px;
-    text-transform: uppercase;
-
+    font-weight: bold;
 }
 #scoreboard h2{
     width:100%;
