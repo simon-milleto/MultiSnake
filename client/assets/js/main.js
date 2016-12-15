@@ -6,9 +6,9 @@ import $ from 'jquery';
 
 document.addEventListener('DOMContentLoaded', function () {
 
-	$('#name').submit(function(e) {
+	$('.username').submit(function(e) {
 		e.preventDefault();
-		var name = $(this).find('.username')[0].value;
+		var name = $(this).find('.field-username')[0].value;
 
 		$(this).hide();
 

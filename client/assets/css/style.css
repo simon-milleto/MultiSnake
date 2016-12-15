@@ -39,25 +39,30 @@ section {
     background: #eee;
 }
 #scoreboard{
-
+    background-color:rgba(20,20,20,0.5);
+    display:flex;
+    height:400px;
+    width:250px;
+    flex-direction:column;
 }
 #userlist{
-    list-style-type: none;height:400px;background-color:rgba(20,20,20,0.5);width:200px;
+    list-style-type: none;
+    width:100%;
+
 }
 #scoreboard h2{
+    width:100%;
+    padding:10px 0;
     color:white;
     text-align: center;
-    padding:10px 0;
-    background-color: rgba(20,20,20,0.5);
 }
 #userlist li{
     width:100%;
     padding:10px;
+    display:flex;
+    justify-content: space-between;
 }
-.score{
-    float:right;
-}
-.name{
+.username{
     position:fixed;
     width:300px;
     height:100px;
@@ -66,10 +71,10 @@ section {
     flex-direction: column;
     bottom: initial;
 }
-.name input{
+.username input{
     width:100%;
 }
-.name button{
+.username button{
     width:50px;
     margin:auto;
     display:block;
