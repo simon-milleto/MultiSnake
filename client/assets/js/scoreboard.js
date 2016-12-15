@@ -2,44 +2,45 @@ import $ from 'jquery';
 
 export default class Scoreboard {
 
-	addPlayer(snake) {
-		$("#userlist").append(this.createPlayer(snake));
+	constructor() {
+		this.players = new WeakMap;
+		this.userContainer = $('#userlist');
 	}
 
-	createPlayer(snake) {
+	addPlayer(player) {
+		let playerContainer = this.createPlayer(player);
+		this.players.set(player, playerContainer);
+
+		this.userContainer.append(playerContainer);
+	}
+
+	createPlayer(player) {
 		var li = $('<li>');
-		li.css('color', snake.color);
-		li.data('name', snake.name);
+		li.css('color', player.color);
+		li.data('name', player.name);
 		li.append(
 			$('<span>', {
 				class: 'name',
-				text: snake.name
+				text: player.name
 			}),
 			$('<span>', {
 				class: 'score',
-				text: snake.score
+				text: player.score
 			})
 		);
 
 		return li;
 	}
 
-	updateScores(snakes) {
-		snakes.forEach((snake) => {
-			$.each($('#userlist li'), (i, player) => {
-				if ($(player).data('name') === snake.name) {
-					$('span.score').text(snake.score);
-				}
-			});
+	updateScores(players) {
+		players.forEach((player) => {
+			this.players.get(player).find('span.score').text(player.score);
 		});
 	}
 
-	removePlayer(snake) {
-		$.each($('#userlist li'), (i, player) => {
-			if ($(player).data('name') === snake.name) {
-				player.remove();
-			}
-		});
+	removePlayer(player) {
+		this.players.get(player).remove();
+		this.players.delete(player);
 	}
 
 }
