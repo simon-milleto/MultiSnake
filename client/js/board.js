@@ -1,6 +1,5 @@
 'use strict';
 
-import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
 import Apple from './apple';
 import Scoreboard from './scoreboard';
@@ -9,9 +8,8 @@ import * as constant from './constant';
 
 export default class Board {
 
-	constructor() {
-		this.context = createCanvasGame();
-		this.scoreboard = new Scoreboard();
+	constructor(canvasContext) {
+		this.context = canvasContext;
 		this.snakes = [];
 		this.apples = [];
 		this.color = [
@@ -26,8 +24,6 @@ export default class Board {
 			"#51f1e0",
 			"#F2385A"
 		];
-
-		this.scoreboard.playersContainer.appendTo('#scoreboard');
 	}
 
 	newSnake(x, y, name) {
@@ -44,9 +40,19 @@ export default class Board {
 
 	newApple(x, y) {
 		let apple = new Apple(this.context, x, y);
-		apple.draw();
 
 		this.apples.push(apple);
+
+		return apple;
+	}
+
+	generateApple(){
+
+		var x = Math.floor(Math.random() * constant.CANVAS_WIDTH/constant.GRID_SIZE) * constant.GRID_SIZE + constant.GRID_SIZE/2;
+		var y = Math.floor(Math.random() * constant.CANVAS_HEIGHT/constant.GRID_SIZE) * constant.GRID_SIZE + constant.GRID_SIZE/2;
+
+		return this.newApple(x,y);
+
 	}
 
 	getAvailableColor() {
@@ -61,7 +67,14 @@ export default class Board {
 		});
 	}
 
+	createScoreboard() {
+        this.scoreboard = new Scoreboard();
+
+        this.scoreboard.playersContainer.appendTo('#scoreboard');
+    }
+
 	render() {
+
 		setInterval(() => {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			this.snakes[0].move(this);

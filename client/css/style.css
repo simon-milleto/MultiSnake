@@ -11,9 +11,6 @@ html, body {
 
 body {
     font: 13px Helvetica, Arial;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 section {
@@ -39,7 +36,11 @@ section {
     background: #eee;
 }
 #scoreboard{
+<<<<<<< HEAD:client/assets/css/style.css
     background-color:rgba(20,20,20,0.3);
+=======
+    background-color:rgba(20,20,20,0.9);
+>>>>>>> 97100e290d41fb761e0897dd3183e08a64dd1fb1:client/css/style.css
     display:flex;
     height:400px;
     width:250px;
@@ -64,14 +65,21 @@ section {
     display:flex;
     justify-content: space-between;
 }
+div.username{
+    width:100%;
+    height:100%;
+    background-color:white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+}
 form.username{
-    position:fixed;
     width:300px;
     height:100px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    bottom: initial;
 }
 form.username input{
     width:100%;
