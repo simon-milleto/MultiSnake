@@ -62,3 +62,21 @@ form button {
 .score{
     float:right;
 }
+#form-name{
+    width:300px;
+    height:100px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+#form-name.filled{
+    display:none;
+}
+#form-name #name{
+    width:100%;
+}
+#form-name input[type="submit"]{
+    width:50px;
+    margin:auto;
+    display:block;
+}
