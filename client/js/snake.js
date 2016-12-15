@@ -36,10 +36,6 @@ export default class Snake {
 		return snakePart;
 	}
 
-	changeDirecion(direction) {
-		this.direction = direction;
-	}
-
 	moveDown() {
 		let lastBodyPart = this.bodyParts[this.bodyParts.length - 1];
 		let firstBodyPart = this.bodyParts[0];

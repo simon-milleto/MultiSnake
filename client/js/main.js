@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			/* Random place on board for testing purpose */
 			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/constant.GRID_SIZE)) * constant.GRID_SIZE;
 			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/constant.GRID_SIZE)) * constant.GRID_SIZE;
-			let snake = board.newSnake(long, lat, name);
+			let clientLocaleSnake = board.newSnake(long, lat, name);
 
 			server.on('new_apple', function(data){
 				let apple = board.newApple(data.x, data.y);
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			server.on('setDirection', data => {
 				board.snakes.forEach(snake => {
-					if (snake.x === data.snake.x && snake.y === data.snake.y) {
-						snake.changeDirecion(data.direction);
+					if (snake.name === data.name) {
+						snake.direction = data.direction;
 					}
 				});
 			});
@@ -45,17 +45,17 @@ document.addEventListener('DOMContentLoaded', function () {
 			board.render();
 
 			$('body').keydown((e) => {
-				if (e.keyCode === 37 && snake.direction !== 'right') {
-					server.changeDirection(snake, 'left');
+				if (e.keyCode === 37 && clientLocaleSnake.direction !== 'right') {
+					server.changeDirection(clientLocaleSnake.name, 'left');
 				}
-				else if (e.keyCode === 38 && snake.direction !== 'down') {
-					server.changeDirection(snake, 'up');
+				else if (e.keyCode === 38 && clientLocaleSnake.direction !== 'down') {
+					server.changeDirection(clientLocaleSnake.name, 'up');
 				}
-				else if (e.keyCode === 39 && snake.direction !== 'left') {
-					server.changeDirection(snake, 'right');
+				else if (e.keyCode === 39 && clientLocaleSnake.direction !== 'left') {
+					server.changeDirection(clientLocaleSnake.name, 'right');
 				}
-				else if (e.keyCode === 40 && snake.direction !== 'up') {
-					server.changeDirection(snake, 'down');
+				else if (e.keyCode === 40 && clientLocaleSnake.direction !== 'up') {
+					server.changeDirection(clientLocaleSnake.name, 'down');
 				}
 			});
 		});

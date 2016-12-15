@@ -15,8 +15,8 @@ var serverObject = ee({
 	sendMove(event){
 		socket.emit('movement', event);
 	},
-	changeDirection(snake, direction) {
-		socket.emit('changeDirection', {snake: snake, direction: direction});
+	changeDirection(name, direction) {
+		socket.emit('changeDirection', {name: name, direction: direction});
 	}
 });
 
