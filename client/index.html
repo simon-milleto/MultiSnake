@@ -2,17 +2,20 @@
 <html>
 <head>
 	<title>Multisnake</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<script src="assets/js/bundle.js"></script>
+	<meta name="description" content="Jouer à Snake à plusieurs !" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/bundle.js" defer></script>
 </head>
 
 <body>
-	<div id="message"></div>
-	<form class="username" action="">
-		<label>Choose a name :</label>
-		<input type="text" name="name" class="username" placeholder="Player-With-Beautiful-Name" autocomplete="username" required>
-		<button>Go !</button>
-	</form>
+<div id="message"></div>
+	<div class="username">
+		<form class="username" action="">
+			<label>Choose a name :</label>
+			<input type="text" name="name" class="username" placeholder="Player-With-Beautiful-Name" autocomplete="username" required>
+			<button>Go !</button>
+		</form>
+	</div>
 
 	<section>
 	    <canvas id="canvas" width="1200" height="690"></canvas>

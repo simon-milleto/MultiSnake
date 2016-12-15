@@ -6,8 +6,8 @@ const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-import * as constant from '../client/assets/js/constant';
-import Board from '../client/assets/js/board.js';
+import * as constant from '../client/js/constant';
+import Board from '../client/js/board.js';
 
 var b = new Board();
 
@@ -26,7 +26,7 @@ io.on('connection', function(socket) {
 		io.emit('movement', event);
 	});
 
-    socket.on('disconnect', function() {
+	socket.on('disconnect', function() {
 		io.emit('disconnect message');
 	});
 });

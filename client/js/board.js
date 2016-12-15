@@ -69,19 +69,19 @@ export default class Board {
 	}
 
 	createScoreboard() {
-        this.scoreboard = new Scoreboard();
+		this.scoreboard = new Scoreboard();
 
-        this.scoreboard.playersContainer.appendTo('#scoreboard');
-    }
+		this.scoreboard.playersContainer.appendTo('#scoreboard');
+	}
 
 	render() {
 		setInterval(() => {
-            if(this.shouldRender) {
+			if(this.shouldRender) {
                 // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
-                this.snakes[0].move(this);
-                this.scoreboard.updateScores(this.snakes);
-                this.checkSnakeSelfCollision();
-            }
+				this.snakes[0].move(this);
+				this.scoreboard.updateScores(this.snakes);
+				this.checkSnakeSelfCollision();
+			}
             // END TEMP
 		}, constant.DELAY);
 
@@ -100,7 +100,7 @@ export default class Board {
 				snake.direction = 'down';
 			}
 		});
-    }
+	}
 
 	checkSnakeSelfCollision() {
 
