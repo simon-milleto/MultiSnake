@@ -4,6 +4,8 @@
   "description": "A multiplayer Snake created by ECV Digitale Dev Master students.",
   "main": "index.html",
   "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
     "browserify": "^13.1.1",
     "event-emitter": "^0.3.4",
     "express": "^4.14.0",
@@ -20,8 +22,9 @@
     "bundle": "browserify client/assets/js/main.js -o client/assets/js/bundle.js -t rollupify -d",
     "watch": "watchify client/assets/js/main.js -o client/assets/js/bundle.js -t rollupify -d -v",
     "eslint": "eslint ./client/assets/js/**/*.js",
-    "serve": "nodemon server/index.js",
-    "start": "npm-run-all bundle serve"
+    "serve": "nodemon --exec npm run babel-node -- server/index.js",
+    "start": "npm-run-all bundle serve",
+    "babel-node": "babel-node --presets=es2015"
   },
   "repository": {
     "type": "git",
