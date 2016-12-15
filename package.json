@@ -19,9 +19,9 @@
     "watchify": "^3.7.0"
   },
   "scripts": {
-    "bundle": "browserify client/assets/js/main.js -o client/assets/js/bundle.js -t rollupify -d",
-    "watch": "watchify client/assets/js/main.js -o client/assets/js/bundle.js -t rollupify -d -v",
-    "eslint": "eslint ./client/assets/js/**/*.js",
+    "bundle": "browserify client/js/main.js -o client/js/bundle.js -t rollupify -d",
+    "watch": "watchify client/js/main.js -o client/js/bundle.js -t rollupify -d -v",
+    "eslint": "eslint ./client/js/**/*.js",
     "serve": "nodemon --exec npm run babel-node -- server/index.js",
     "start": "npm-run-all bundle serve",
     "babel-node": "babel-node --presets=es2015"
