@@ -1,24 +1,30 @@
 <!doctype html>
 <html>
 <head>
-    <title>Multisnake</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="assets/js/bundle.js"></script>
+	<title>Multisnake</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="assets/js/bundle.js"></script>
 </head>
 
 <body>
 
-<section>
-    <canvas id="canvas" width="1200" height="690"></canvas>
+	<form class="username" action="">
+		<label>Choose a name :</label>
+		<input type="text" name="name" class="username" placeholder="Player-With-Beautiful-Name" autocomplete="username" required>
+		<button>Go !</button>
+	</form>
 
-    <div id="scoreboard">
-        <h2>ScoreBoard :</h2>
-        <ul id="userlist"></ul>
-    </div>
-</section>
-    <ul id="messages"></ul>
+	<section>
+	    <canvas id="canvas" width="1200" height="690"></canvas>
 
-    
+	    <div id="scoreboard">
+	        <h2>ScoreBoard :</h2>
+	        <ul id="userlist"></ul>
+	    </div>
+	</section>
+
+	<ul id="messages"></ul>
+
 </body>
 
 </html>
