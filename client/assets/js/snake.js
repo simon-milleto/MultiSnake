@@ -1,10 +1,7 @@
 'use strict';
 
 import SnakePart from './snakePart';
-
-const SNAKE_WIDTH = 25;
-const SNAKE_HEIGHT = 25;
-const BODY_PART_MARGIN = 5;
+import * as constant from './constant';
 
 export default class Snake {
 
@@ -17,8 +14,8 @@ export default class Snake {
 		this.direction = 'right';
         // END TEMP
 		this.color = color;
-		this.width = SNAKE_WIDTH;
-		this.height = SNAKE_HEIGHT;
+		this.width = constant.SNAKE_WIDTH;
+		this.height = constant.SNAKE_HEIGHT;
 
 		this.bodyParts = [];
 		this.name = name;
@@ -45,7 +42,7 @@ export default class Snake {
 
 		lastBodyPart.remove();
 
-		lastBodyPart.y = firstBodyPart.y + this.height + BODY_PART_MARGIN;
+		lastBodyPart.y = firstBodyPart.y + this.height + constant.BODY_PART_MARGIN;
 		lastBodyPart.x = firstBodyPart.x;
 
 		if (firstBodyPart.y + this.height >= this.context.canvas.clientHeight - BODY_PART_MARGIN) {
@@ -63,7 +60,7 @@ export default class Snake {
 
 		lastBodyPart.remove();
 
-		lastBodyPart.y = firstBodyPart.y - this.height - BODY_PART_MARGIN;
+		lastBodyPart.y = firstBodyPart.y - this.height - constant.BODY_PART_MARGIN;
 		lastBodyPart.x = firstBodyPart.x;
 
 		if (firstBodyPart.y <= 0) {
@@ -82,10 +79,11 @@ export default class Snake {
 		lastBodyPart.remove();
 
 		lastBodyPart.y = firstBodyPart.y;
-		lastBodyPart.x = firstBodyPart.x - this.width - BODY_PART_MARGIN;
+
+		lastBodyPart.x = firstBodyPart.x - this.width - constant.BODY_PART_MARGIN;
 
 		if (firstBodyPart.x <= 0) {
-			lastBodyPart.x = this.context.canvas.clientWidth - (this.width + BODY_PART_MARGIN);
+			lastBodyPart.x = this.context.canvas.clientWidth - (this.width + constant.BODY_PART_MARGIN);
 		}
 
 		lastBodyPart.draw();
@@ -100,9 +98,10 @@ export default class Snake {
 		lastBodyPart.remove();
 
 		lastBodyPart.y = firstBodyPart.y;
-		lastBodyPart.x = firstBodyPart.x + this.width + BODY_PART_MARGIN;
 
-		if (firstBodyPart.x + this.width >= this.context.canvas.clientWidth) {
+		lastBodyPart.x = firstBodyPart.x + this.width + constant.BODY_PART_MARGIN;
+
+		if (lastBodyPart.x >= this.context.canvas.clientWidth) {
 			lastBodyPart.x = 0;
 		}
 

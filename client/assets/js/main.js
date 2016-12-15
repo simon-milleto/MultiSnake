@@ -3,11 +3,19 @@
 import Board from './board';
 import server from './sendToServer.js';
 import createCanvasGame from './createCanvasGame.js';
+import $ from 'jquery';
 
 document.addEventListener('DOMContentLoaded', function () {
 
 	let context = createCanvasGame()
 	let board = new Board(context);
+	$('form.username').submit(function(e) {
+		e.preventDefault();
+		var name = $(this).find('input.username')[0].value;
+
+		$(this).remove();
+
+		let board = new Board();
 
 
     // TEMP: CREATE TWO SNAKES FOR TEST PURPOSES
@@ -15,16 +23,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	// board.newSnake(420, 330, 'Xx-JeanKevin33-xX');
     // END TEMP
 
-	server.on('connection', function(){
-    	/* Random place on board for testing purpose */
-    	let long = Math.floor(Math.random() * 1000);
-    	let lat = Math.floor(Math.random() * 500);
-    	board.newSnake(long, lat);
-	});
+	    server.on('connection', function(){
+	    	/* Random place on board for testing purpose */
+	    	let long = Math.floor(Math.random() * 1000);
+	    	let lat = Math.floor(Math.random() * 500);
+	    	board.newSnake(long, lat);
+	    });
 
-	server.on('disconnection', function(){
-    	// Destroy Snake
-	});
+	    server.on('disconnection', function(){
+	    	// Destroy Snake
+	    });
 
 server.on('new apple', function(data){
 	let apple = board.newApple(data.x, data.y);
@@ -41,10 +49,11 @@ server.on('new apple', function(data){
 	// board.newApple(105, 855);
     // END TEMP
 
-	server.sendNewUser();
-	server.sendDeleteUser();
-	server.sendMove();
+		server.sendNewUser();
+		server.sendDeleteUser();
+		server.sendMove();
 
-	board.render();
+		board.render();
+	});
 
 });

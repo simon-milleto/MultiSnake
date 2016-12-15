@@ -1,6 +1,6 @@
 'use strict';
 
-const BACKGROUND_COLOR = '#000000';
+import * as constant from './constant';
 
 export default function createCanvasGame() {
 
@@ -8,7 +8,7 @@ export default function createCanvasGame() {
 
 	let context = canvas.getContext('2d');
 
-	context.fillStyle = BACKGROUND_COLOR;
+	context.fillStyle = constant.BACKGROUND_COLOR;
 	context.fillRect(0, 0, canvas.width, canvas.height);
 
 	return context;
