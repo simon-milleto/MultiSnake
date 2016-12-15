@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			board.render();
 			board.on('appleEaten', function(position){
-				console.log('zeg');
 				server.sendAppleEaten(position.x, position.y);
 			});
 		});

@@ -44,7 +44,8 @@ socket.on('new_apple', function(data) {
 	serverObject.emit('new_apple', data);
 });
 
-socket.on('appleEaten', function() {
+socket.on('appleEaten', function(data) {
+	console.log('sendto');
 	serverObject.emit('new_apple', data);
 });
 

@@ -139,8 +139,7 @@ export default class Board extends EventEmitter{
 					snake.addScore();
 					snake.addBodyPart();
 
-					
-					this.emit('appleEaten', {'x':x, 'y':y});
+					this.emit('appleEaten', {'x':apple.x, 'y':apple.y});
 				}
 			});
 		});
