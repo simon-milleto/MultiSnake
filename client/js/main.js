@@ -24,14 +24,20 @@ document.addEventListener('DOMContentLoaded', function () {
 			/* Random place on board for testing purpose */
 			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/constant.GRID_SIZE)) * constant.GRID_SIZE;
 			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/constant.GRID_SIZE)) * constant.GRID_SIZE;
-			board.newSnake(long, lat, name);
+			let clientLocaleSnake = board.newSnake(long, lat, name);
 
 			server.on('new_apple', function(data){
-
 				let apple = board.newApple(data.x, data.y);
 				apple.draw();
 			});
 
+			server.on('setDirection', data => {
+				board.snakes.forEach(snake => {
+					if (snake.name === data.name) {
+						snake.direction = data.direction;
+					}
+				});
+			});
 
 			server.sendNewUser();
 			//server.sendDeleteUser();
@@ -45,8 +51,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			});
 
+			$('body').keydown((e) => {
+				if (e.keyCode === 37 && clientLocaleSnake.direction !== 'right') {
+					server.changeDirection(clientLocaleSnake.name, 'left');
+				}
+				else if (e.keyCode === 38 && clientLocaleSnake.direction !== 'down') {
+					server.changeDirection(clientLocaleSnake.name, 'up');
+				}
+				else if (e.keyCode === 39 && clientLocaleSnake.direction !== 'left') {
+					server.changeDirection(clientLocaleSnake.name, 'right');
+				}
+				else if (e.keyCode === 40 && clientLocaleSnake.direction !== 'up') {
+					server.changeDirection(clientLocaleSnake.name, 'down');
+				}
+			});
 		});
 	});
-
-
 });

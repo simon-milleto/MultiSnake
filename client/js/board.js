@@ -3,7 +3,6 @@
 import Snake from './snake';
 import Apple from './apple';
 import Scoreboard from './scoreboard';
-import $ from 'jquery';
 import * as constant from './constant';
 
 export default class Board {
@@ -33,6 +32,8 @@ export default class Board {
 			snake.draw();
 
 			this.snakes.push(snake);
+
+			return snake;
 		} else {
 			console.error('Error : only 10 snakes can be on the board');
 		}
@@ -75,28 +76,12 @@ export default class Board {
 
 	render() {
 		this.intervalId = setInterval(() => {
-                // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
-				this.snakes[0].move(this);
-				this.scoreboard.updateScores(this.snakes);
-				this.checkSnakeSelfCollision();
-            // END TEMP
+			this.snakes.forEach(snake => {
+				snake.move(this);
+			});
+			this.scoreboard.updateScores(this.snakes);
+			this.checkSnakeSelfCollision();
 		}, constant.DELAY);
-
-		$('body').keydown((e) => {
-			let snake = this.snakes[0];
-			if (e.keyCode === 37 && snake.direction !== 'right') {
-				snake.direction = 'left';
-			}
-			else if (e.keyCode === 38 && snake.direction !== 'down') {
-				snake.direction = 'up';
-			}
-			else if (e.keyCode === 39 && snake.direction !== 'left') {
-				snake.direction = 'right';
-			}
-			else if (e.keyCode === 40 && snake.direction !== 'up') {
-				snake.direction = 'down';
-			}
-		});
 	}
 
 	stopRendering(){
