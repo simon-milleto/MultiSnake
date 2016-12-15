@@ -1,8 +1,6 @@
 'use strict';
 
-const BACKGROUND_COLOR = '#000000';
-const APPLE_COLOR = '#e93c4f';
-const APPLE_RADIUS = 5;
+import * as constant from './constant';
 
 export default class Apple {
 
@@ -10,13 +8,13 @@ export default class Apple {
 		this.context = context;
 		this.x = x;
 		this.y = y;
-		this.radius = APPLE_RADIUS;
+		this.radius = constant.APPLE_RADIUS;
 	}
 
 	draw() {
 		this.context.beginPath();
 		this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-		this.context.fillStyle = APPLE_COLOR;
+		this.context.fillStyle = constant.APPLE_COLOR;
 		this.context.fill();
 		this.context.closePath();
 	}
@@ -24,7 +22,7 @@ export default class Apple {
 	remove() {
 		this.context.beginPath();
 		this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-		this.context.fillStyle = BACKGROUND_COLOR;
+		this.context.fillStyle = constant.BACKGROUND_COLOR;
 		this.context.fill();
 		this.context.closePath();
 	}

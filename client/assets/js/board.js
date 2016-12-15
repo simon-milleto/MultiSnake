@@ -6,8 +6,7 @@ import Snake from './snake';
 import Apple from './apple';
 import scoreBoard from './scoreboard';
 import $ from 'jquery';
-
-const DELAY = 150;
+import * as constant from './constant';
 
 export default class Board {
 
@@ -65,7 +64,7 @@ export default class Board {
 			this.snakes[0].move(this);
             this.checkSnakeSelfCollision();
             // END TEMP
-		}, DELAY);
+		}, constant.DELAY);
 
 		scoreBoard(this.snakes);
 

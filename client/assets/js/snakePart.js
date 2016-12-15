@@ -1,6 +1,6 @@
 'use strict';
 
-const BACKGROUND_COLOR = '#000000';
+import * as constant from './constant';
 
 export default class SnakePart {
 
@@ -24,7 +24,7 @@ export default class SnakePart {
 	remove() {
 		this.context.beginPath();
 		this.context.rect(this.x, this.y, this.width, this.height);
-		this.context.fillStyle = BACKGROUND_COLOR;
+		this.context.fillStyle = constant.BACKGROUND_COLOR;
 		this.context.fill();
 		this.context.closePath();
 	}
