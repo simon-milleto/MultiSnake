@@ -2,6 +2,7 @@
 
 import Board from './board';
 import server from './sendToServer.js';
+import createCanvasGame from './createCanvasGame.js';
 import * as constant from './constant';
 import $ from 'jquery';
 
@@ -15,22 +16,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			$(this).remove();
 
-			let board = new Board();
+			let context = createCanvasGame();
+			let board = new Board(context);
+			board.createScoreboard();
 
 			/* Random place on board for testing purpose */
-			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/30)) * 30;
-			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/30)) * 30;
+			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/constant.GRID_SIZE)) * constant.GRID_SIZE;
+			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/constant.GRID_SIZE)) * constant.GRID_SIZE;
 			board.newSnake(long, lat, name);
 
-            // TEMP: CREATE SEVEN APPLES FOR TEST PURPOSES
-			board.newApple(765, 315);
-			board.newApple(1155, 75);
-			board.newApple(495, 615);
-			board.newApple(1035, 495);
-			board.newApple(135, 285);
-			board.newApple(1005, 795);
-			board.newApple(105, 855);
-            // END TEMP
+			server.on('new_apple', function(data){
+
+				let apple = board.newApple(data.x, data.y);
+				apple.draw();
+			});
+
 
 			server.sendNewUser();
 			server.sendDeleteUser();

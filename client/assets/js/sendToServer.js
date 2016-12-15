@@ -37,6 +37,10 @@ socket.on('disconnect', function() {
 	serverObject.emit('disconnect');
 });
 
+socket.on('new_apple', function(data) {
+	serverObject.emit('new_apple', data);
+});
+
 window.addEventListener('offline', function() {
 	serverObject.emit('disconnect');
 });
