@@ -29,6 +29,14 @@ io.on('connection', socket => {
 	socket.on('disconnect', () => {
 		io.emit('disconnect message');
 	});
+
+	socket.on('appleEaten', (position) => {
+		b.apples.forEach(function(apple){
+			if(apple.x === position.x && apple.y === position.y){
+				apple.remove();
+			}
+		});
+	});
 });
 
 setInterval(function() {

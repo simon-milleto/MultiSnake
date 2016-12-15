@@ -36,12 +36,20 @@ document.addEventListener('DOMContentLoaded', function () {
 			server.sendDeleteUser();
 			server.sendMove();
 
+			//server.sendAppleEaten(x, y);
+
 			board.render();
+			board.on('appleEaten', function(position){
+				console.log('zeg');
+				server.sendAppleEaten(position.x, position.y);
+			});
 		});
 	});
 
 	server.on('disconnection', function(){
         // Destroy Snake
 	});
+
+
 
 });
