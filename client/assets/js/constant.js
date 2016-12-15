@@ -15,3 +15,5 @@ export const CANVAS_HEIGHT = 690;
 
 export const TOTAL_DURATION = 5000;
 export const GAME_DURATION = 3000;
+
+export const GRID_SIZE = 30;

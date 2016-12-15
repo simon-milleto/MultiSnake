@@ -48,8 +48,8 @@ export default class Board {
 
 	generateApple(){
 
-		var x = Math.floor(Math.random() * constant.CANVAS_WIDTH/30) * 30 + 15;
-		var y = Math.floor(Math.random() * constant.CANVAS_HEIGHT/30) * 30 + 15;
+		var x = Math.floor(Math.random() * constant.CANVAS_WIDTH/constant.GRID_SIZE) * constant.GRID_SIZE + constant.GRID_SIZE/2;
+		var y = Math.floor(Math.random() * constant.CANVAS_HEIGHT/constant.GRID_SIZE) * constant.GRID_SIZE + constant.GRID_SIZE/2;
 
 		return this.newApple(x,y);
 
