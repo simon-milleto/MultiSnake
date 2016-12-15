@@ -1,4 +1,5 @@
 'use strict';
+const BACKGROUND_COLOR = '#000000';
 
 import SnakePart from './snakePart';
 import * as constant from './constant';
@@ -23,13 +24,14 @@ export default class Snake {
 
 	draw() {
 		let snake = this.addBodyPart(this.x, this.y);
+        this.addBodyPart(this.x, this.y);
+        this.addBodyPart(this.x, this.y);
 
 		snake.draw();
 	}
 
 	addBodyPart() {
 		let snakePart = new SnakePart(this.context, this.x, this.y, this.width, this.height, this.color);
-
 		this.bodyParts.push(snakePart);
 
 		return snakePart;
@@ -43,6 +45,11 @@ export default class Snake {
 
 		lastBodyPart.y = firstBodyPart.y + this.height + constant.BODY_PART_MARGIN;
 		lastBodyPart.x = firstBodyPart.x;
+
+		if (firstBodyPart.y + this.height >= this.context.canvas.clientHeight - BODY_PART_MARGIN) {
+			lastBodyPart.y = 0;
+		}
+
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
@@ -56,6 +63,11 @@ export default class Snake {
 
 		lastBodyPart.y = firstBodyPart.y - this.height - constant.BODY_PART_MARGIN;
 		lastBodyPart.x = firstBodyPart.x;
+
+		if (firstBodyPart.y <= 0) {
+			lastBodyPart.y = this.context.canvas.clientHeight - (this.height + BODY_PART_MARGIN);
+		}
+
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
@@ -68,7 +80,13 @@ export default class Snake {
 		lastBodyPart.remove();
 
 		lastBodyPart.y = firstBodyPart.y;
+
 		lastBodyPart.x = firstBodyPart.x - this.width - constant.BODY_PART_MARGIN;
+
+		if (firstBodyPart.x <= 0) {
+			lastBodyPart.x = this.context.canvas.clientWidth - (this.width + constant.BODY_PART_MARGIN);
+		}
+
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
@@ -81,7 +99,13 @@ export default class Snake {
 		lastBodyPart.remove();
 
 		lastBodyPart.y = firstBodyPart.y;
+
 		lastBodyPart.x = firstBodyPart.x + this.width + constant.BODY_PART_MARGIN;
+
+		if (lastBodyPart.x >= this.context.canvas.clientWidth) {
+			lastBodyPart.x = 0;
+		}
+
 		lastBodyPart.draw();
 
 		this.moveBodyPartsInArray();
@@ -129,4 +153,11 @@ export default class Snake {
 			}
 		});
 	}
+
+	remove() {
+        this.bodyParts.forEach((bodyPart) => {
+            bodyPart.remove()
+        });
+    }
+
 }

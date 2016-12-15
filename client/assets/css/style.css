@@ -70,7 +70,9 @@ section {
     background-color: rgba(20,20,20,0.5);
 }
 #userlist li{
-    color:white;
     width:100%;
     padding:10px;
+}
+.score{
+    float:right;
 }

@@ -1,4 +1,5 @@
 'use strict';
+const BACKGROUND_COLOR = '#000000';
 
 import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
@@ -28,14 +29,14 @@ export default class Board {
 	}
 
 	newSnake(x, y, name) {
-        if(this.snakes.length < 10){
-            let snake = new Snake(this.context, x, y, this.getAvailableColor(), name);
-            snake.draw();
+		if(this.snakes.length < 10){
+			let snake = new Snake(this.context, x, y, this.getAvailableColor(), name);
+			snake.draw();
 
-            this.snakes.push(snake);
-        } else {
-            console.error('Error : only 10 snakes can be on the board');
-        }
+			this.snakes.push(snake);
+		} else {
+			console.error('Error : only 10 snakes can be on the board');
+		}
 	}
 
 	newApple(x, y) {
@@ -61,6 +62,7 @@ export default class Board {
 		setInterval(() => {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			this.snakes[0].move(this);
+            this.checkSnakeSelfCollision();
             // END TEMP
 		}, constant.DELAY);
 
@@ -82,5 +84,31 @@ export default class Board {
 			}
 		});
 	}
+
+    checkSnakeSelfCollision() {
+
+        this.snakes.forEach((snake, i) => {
+
+            let firstBodyPart = snake.bodyParts[0];
+            snake.bodyParts.forEach((bodyPart, index) => {
+                if (index === 0) {
+                    return;
+                }
+
+                if (firstBodyPart.x < bodyPart.x + bodyPart.width &&
+                    firstBodyPart.x + firstBodyPart.width > bodyPart.x &&
+                    firstBodyPart.y < bodyPart.y + bodyPart.height &&
+                    firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
+
+                	this.removeSnakeFromArray(i);
+                }
+            });
+		})
+    }
+
+    removeSnakeFromArray(i) {
+        this.snakes[i].remove();
+        this.snakes.splice(i, 1);
+    }
 
 }

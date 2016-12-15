@@ -13,6 +13,17 @@ document.addEventListener('DOMContentLoaded', function () {
 	board.newSnake(420, 330, 'Xx-JeanKevin33-xX');
     // END TEMP
 
+    server.on('connection', function(){
+    	/* Random place on board for testing purpose */
+    	let long = Math.floor(Math.random() * 1000);
+    	let lat = Math.floor(Math.random() * 500);
+    	board.newSnake(long, lat);
+    });
+
+    server.on('disconnection', function(){
+    	// Destroy Snake
+    });
+
     // TEMP: CREATE SEVEN APPLES FOR TEST PURPOSES
 	board.newApple(765, 315);
 	board.newApple(1155, 75);

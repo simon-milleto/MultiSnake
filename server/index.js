@@ -7,6 +7,8 @@ const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+const board = require('../client/assets/js/board.js')
+
 const totalDuration = 5000;
 const gameDuration = 3000;
 
