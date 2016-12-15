@@ -62,7 +62,7 @@ section {
     display:flex;
     justify-content: space-between;
 }
-.username{
+form.username{
     position:fixed;
     width:300px;
     height:100px;
@@ -71,10 +71,10 @@ section {
     flex-direction: column;
     bottom: initial;
 }
-.username input{
+form.username input{
     width:100%;
 }
-.username button{
+form.username button{
     width:50px;
     margin:auto;
     display:block;

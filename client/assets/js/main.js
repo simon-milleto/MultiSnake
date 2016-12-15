@@ -6,11 +6,11 @@ import $ from 'jquery';
 
 document.addEventListener('DOMContentLoaded', function () {
 
-	$('.username').submit(function(e) {
+	$('form.username').submit(function(e) {
 		e.preventDefault();
-		var name = $(this).find('.field-username')[0].value;
+		var name = $(this).find('input.username')[0].value;
 
-		$(this).hide();
+		$(this).remove();
 
 		let board = new Board();
 
