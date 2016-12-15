@@ -24,6 +24,7 @@ export default class Board {
 			"#51f1e0",
 			"#F2385A"
 		];
+		this.shouldRender = true;
 	}
 
 	newSnake(x, y, name) {
@@ -74,12 +75,13 @@ export default class Board {
     }
 
 	render() {
-
 		setInterval(() => {
-            // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
-			this.snakes[0].move(this);
-			this.scoreboard.updateScores(this.snakes);
-			this.checkSnakeSelfCollision();
+            if(this.shouldRender) {
+                // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
+                this.snakes[0].move(this);
+                this.scoreboard.updateScores(this.snakes);
+                this.checkSnakeSelfCollision();
+            }
             // END TEMP
 		}, constant.DELAY);
 
@@ -98,7 +100,7 @@ export default class Board {
 				snake.direction = 'down';
 			}
 		});
-	}
+    }
 
 	checkSnakeSelfCollision() {
 

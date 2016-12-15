@@ -15,7 +15,9 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+body.blur{
+    background-color: rgba(0,0,0, 0.7);
+}
 section {
     display: flex;
     justify-content: space-around;
@@ -24,19 +26,20 @@ section {
     width: 100%;
     padding: 20px;
 }
-
-#messages {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+#message{
+    position:absolute;
+    padding:10px 30px;
+    opacity:0;
+    top:20%;
+    left:38%;
+    background-color:#ebebeb;
+    border: 1px solid #0F0F0F;
+    transition:all 0.2s;
 }
-
-#messages li {
-    padding: 5px 10px;
-}
-
-#messages li:nth-child(odd) {
-    background: #eee;
+#message.active{
+    opacity:1;
+    top:40%;
+    z-index:9999;
 }
 #scoreboard{
     background-color:rgba(20,20,20,0.5);
