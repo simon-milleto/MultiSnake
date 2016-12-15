@@ -3,7 +3,6 @@
 import Snake from './snake';
 import Apple from './apple';
 import Scoreboard from './scoreboard';
-import $ from 'jquery';
 import * as constant from './constant';
 import EventEmitter from 'event-emitter-es6';
 
@@ -35,6 +34,8 @@ export default class Board extends EventEmitter{
 			snake.draw();
 
 			this.snakes.push(snake);
+
+			return snake;
 		} else {
 			console.error('Error : only 10 snakes can be on the board');
 		}
@@ -70,37 +71,25 @@ export default class Board extends EventEmitter{
 	}
 
 	createScoreboard() {
-        this.scoreboard = new Scoreboard();
+		this.scoreboard = new Scoreboard();
 
-        this.scoreboard.playersContainer.appendTo('#scoreboard');
-    }
+		this.scoreboard.playersContainer.appendTo('#scoreboard');
+	}
 
 	render() {
-
-		setInterval(() => {
-            // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
-			this.snakes[0].move(this);
+		this.intervalId = setInterval(() => {
+			this.snakes.forEach(snake => {
+				snake.move(this);
+			});
 			this.scoreboard.updateScores(this.snakes);
 			this.checkSnakeSelfCollision();
 			this.checkCollisionWithApples();
             // END TEMP
 		}, constant.DELAY);
+	}
 
-		$('body').keydown((e) => {
-			let snake = this.snakes[0];
-			if (e.keyCode === 37 && snake.direction !== 'right') {
-				snake.direction = 'left';
-			}
-			else if (e.keyCode === 38 && snake.direction !== 'down') {
-				snake.direction = 'up';
-			}
-			else if (e.keyCode === 39 && snake.direction !== 'left') {
-				snake.direction = 'right';
-			}
-			else if (e.keyCode === 40 && snake.direction !== 'up') {
-				snake.direction = 'down';
-			}
-		});
+	stopRendering(){
+		clearInterval(this.intervalId);
 	}
 
 	checkSnakeSelfCollision() {
