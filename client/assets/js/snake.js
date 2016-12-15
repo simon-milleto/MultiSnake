@@ -1,5 +1,4 @@
 'use strict';
-const BACKGROUND_COLOR = '#000000';
 
 import SnakePart from './snakePart';
 import * as constant from './constant';
@@ -24,8 +23,8 @@ export default class Snake {
 
 	draw() {
 		let snake = this.addBodyPart(this.x, this.y);
-        this.addBodyPart(this.x, this.y);
-        this.addBodyPart(this.x, this.y);
+		this.addBodyPart(this.x, this.y);
+		this.addBodyPart(this.x, this.y);
 
 		snake.draw();
 	}
@@ -155,9 +154,9 @@ export default class Snake {
 	}
 
 	remove() {
-        this.bodyParts.forEach((bodyPart) => {
-            bodyPart.remove()
-        });
-    }
+		this.bodyParts.forEach((bodyPart) => {
+			bodyPart.remove();
+		});
+	}
 
 }
