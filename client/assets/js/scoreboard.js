@@ -4,16 +4,14 @@ export default class Scoreboard {
 
 	constructor() {
 		this.playersToLi = new WeakMap;
-		this.userContainer = $('<ul>', {id: 'userlist'});
-
-		$('#scoreboard').append(this.userContainer);
+		this.playersContainer = $('<ul>', {id: 'player-list'});
 	}
 
 	addPlayer(player) {
 		let playerContainer = this.createPlayer(player);
 		this.playersToLi.set(player, playerContainer);
 
-		this.userContainer.append(playerContainer);
+		this.playersContainer.append(playerContainer);
 	}
 
 	createPlayer(player) {

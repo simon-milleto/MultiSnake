@@ -26,6 +26,8 @@ export default class Board {
 			"#51f1e0",
 			"#F2385A"
 		];
+
+		this.scoreboard.playersContainer.appendTo('#scoreboard');
 	}
 
 	newSnake(x, y, name) {
