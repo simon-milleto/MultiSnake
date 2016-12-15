@@ -2,6 +2,7 @@
 
 import Board from './board';
 import server from './sendToServer.js';
+import * as constant from './constant';
 import $ from 'jquery';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -16,16 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			let board = new Board();
 
-
-			// TEMP: CREATE TWO SNAKES FOR TEST PURPOSES
-			board.newSnake(0, 60, name);
-			board.newSnake(420, 330, 'Xx-JeanKevin33-xX');
-			// END TEMP
-
 			/* Random place on board for testing purpose */
-			let long = Math.floor(Math.random() * 1000);
-			let lat = Math.floor(Math.random() * 500);
-			board.newSnake(long, lat);
+			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/30)) * 30;
+			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/30)) * 30;
+			board.newSnake(long, lat, name);
 
 			// TEMP: CREATE SEVEN APPLES FOR TEST PURPOSES
 			board.newApple(765, 315);
