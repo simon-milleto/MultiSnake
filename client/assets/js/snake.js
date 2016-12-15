@@ -46,7 +46,7 @@ export default class Snake {
 		lastBodyPart.y = firstBodyPart.y + this.height + constant.BODY_PART_MARGIN;
 		lastBodyPart.x = firstBodyPart.x;
 
-		if (firstBodyPart.y + this.height >= this.context.canvas.clientHeight - BODY_PART_MARGIN) {
+		if (firstBodyPart.y + this.height >= this.context.canvas.clientHeight - constant.BODY_PART_MARGIN) {
 			lastBodyPart.y = 0;
 		}
 
@@ -65,7 +65,7 @@ export default class Snake {
 		lastBodyPart.x = firstBodyPart.x;
 
 		if (firstBodyPart.y <= 0) {
-			lastBodyPart.y = this.context.canvas.clientHeight - (this.height + BODY_PART_MARGIN);
+			lastBodyPart.y = this.context.canvas.clientHeight - (this.height + constant.BODY_PART_MARGIN);
 		}
 
 		lastBodyPart.draw();
