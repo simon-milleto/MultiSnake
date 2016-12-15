@@ -23,9 +23,11 @@ io.on('connection', socket => {
 
 	io.emit('client ID', socket.id);
 	io.emit('connect message');
+
 	socket.on('movement', event => {
 		io.emit('movement', event);
 	});
+	
 	socket.on('disconnect', () => {
 		io.emit('disconnect message');
 	});

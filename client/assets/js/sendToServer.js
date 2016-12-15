@@ -10,7 +10,7 @@ var serverObject = ee({
 		socket.emit('client ID', clientId);
 	},
 	sendDeleteUser(){
-		socket.emit('disconnet', 'Un utilisateur s\'est déconnecté');
+		socket.emit('disconnect', 'Un utilisateur s\'est déconnecté');
 	},
 	sendMove(event){
 		socket.emit('movement', event);
@@ -34,7 +34,7 @@ socket.on('connect message', function() {
 });
 
 socket.on('disconnect', function() {
-	serverObject.emit('disconnection');
+	serverObject.emit('disconnect');
 });
 
 window.addEventListener('offline', function() {
