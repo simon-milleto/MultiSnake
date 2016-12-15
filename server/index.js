@@ -11,8 +11,6 @@ const board = require('../client/assets/js/board.js')
 const totalDuration = 5000;
 const gameDuration = 3000;
 
-const playersNames = [];
-
 app.use(express.static(path.join(__dirname, '..', 'client')));
 
 app.get('/', (req, res) => {
