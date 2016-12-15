@@ -1,7 +1,6 @@
 'use strict';
-const BACKGROUND_COLOR = '#000000';
 
-import createCanvasGame from './createCanvasGame.js';
+//import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
 import Apple from './apple';
 import scoreBoard from './scoreboard';
@@ -11,8 +10,8 @@ const DELAY = 150;
 
 export default class Board {
 
-	constructor() {
-		this.context = createCanvasGame();
+	constructor(canvasContext) {
+		this.context = canvasContext;
 		this.snakes = [];
 		this.apples = [];
 		this.color = [
@@ -42,9 +41,10 @@ export default class Board {
 
 	newApple(x, y) {
 		let apple = new Apple(this.context, x, y);
-		apple.draw();
 
 		this.apples.push(apple);
+
+		return apple;
 	}
 
 	getAvailableColor() {
@@ -63,7 +63,7 @@ export default class Board {
 		setInterval(() => {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			this.snakes[0].move(this);
-            this.checkSnakeSelfCollision();
+			this.checkSnakeSelfCollision();
             // END TEMP
 		}, DELAY);
 
@@ -86,30 +86,30 @@ export default class Board {
 		});
 	}
 
-    checkSnakeSelfCollision() {
+	checkSnakeSelfCollision() {
 
-        this.snakes.forEach((snake, i) => {
+		this.snakes.forEach((snake, i) => {
 
-            let firstBodyPart = snake.bodyParts[0];
-            snake.bodyParts.forEach((bodyPart, index) => {
-                if (index === 0) {
-                    return;
-                }
+			let firstBodyPart = snake.bodyParts[0];
+			snake.bodyParts.forEach((bodyPart, index) => {
+				if (index === 0) {
+					return;
+				}
 
-                if (firstBodyPart.x < bodyPart.x + bodyPart.width &&
+				if (firstBodyPart.x < bodyPart.x + bodyPart.width &&
                     firstBodyPart.x + firstBodyPart.width > bodyPart.x &&
                     firstBodyPart.y < bodyPart.y + bodyPart.height &&
                     firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
 
                 	this.removeSnakeFromArray(i);
-                }
-            });
-		})
-    }
+				}
+			});
+		});
+	}
 
-    removeSnakeFromArray(i) {
-        this.snakes[i].remove();
-        this.snakes.splice(i, 1);
-    }
+	removeSnakeFromArray(i) {
+		this.snakes[i].remove();
+		this.snakes.splice(i, 1);
+	}
 
 }
