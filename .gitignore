@@ -1,5 +1,5 @@
 # Do not add the generated client side bundle.js
-client/assets/js/bundle.js
+client/js/bundle.js
 
 node_modules
 npm-debug.log
