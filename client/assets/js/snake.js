@@ -155,11 +155,10 @@ export default class Snake {
 		});
 	}
 
-    removeSnakeFromScreen(x, y, width) {
-        this.context.beginPath();
-        this.context.rect(x, y, width, width);
-        this.context.fillStyle = BACKGROUND_COLOR;
-        this.context.fill();
-        this.context.closePath();
+	remove() {
+        this.bodyParts.forEach((bodyPart) => {
+            bodyPart.remove()
+        });
     }
+
 }

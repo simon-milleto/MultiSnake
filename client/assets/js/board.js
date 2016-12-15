@@ -63,7 +63,7 @@ export default class Board {
 		setInterval(() => {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			this.snakes[0].move(this);
-            this.checkCollisionWithYourself();
+            this.checkSnakeSelfCollision();
             // END TEMP
 		}, DELAY);
 
@@ -86,8 +86,7 @@ export default class Board {
 		});
 	}
 
-    checkCollisionWithYourself() {
-		//let snake = this.snakes[0];
+    checkSnakeSelfCollision() {
 
         this.snakes.forEach((snake, i) => {
 
@@ -109,10 +108,8 @@ export default class Board {
     }
 
     removeSnakeFromArray(i) {
-		this.snakes[i].bodyParts.forEach((part, index) => {
-			this.snakes[i].removeSnakeFromScreen(part.x, part.y, part.width)
-		});
-		this.snakes.splice(i, 1);
-	}
+        this.snakes[i].remove();
+        this.snakes.splice(i, 1);
+    }
 
 }
