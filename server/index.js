@@ -1,7 +1,6 @@
 'use strict';
 
-const path = require('path')
-
+const path = require('path');
 const express = require('express');
 const app = require('express')();
 const http = require('http').Server(app);
@@ -22,9 +21,11 @@ io.on('connection', socket => {
 
 	io.emit('client ID', socket.id);
 	io.emit('connect message');
+
 	socket.on('movement', event => {
 		io.emit('movement', event);
 	});
+	
 	socket.on('disconnect', () => {
 		io.emit('disconnect message');
 	});
