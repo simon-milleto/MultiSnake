@@ -3,13 +3,15 @@ import $ from 'jquery';
 export default class Scoreboard {
 
 	constructor() {
-		this.players = new WeakMap;
-		this.userContainer = $('#userlist');
+		this.playersToLi = new WeakMap;
+		this.userContainer = $('<ul>', {id: 'userlist'});
+
+		$('#scoreboard').append(this.userContainer);
 	}
 
 	addPlayer(player) {
 		let playerContainer = this.createPlayer(player);
-		this.players.set(player, playerContainer);
+		this.playersToLi.set(player, playerContainer);
 
 		this.userContainer.append(playerContainer);
 	}
@@ -34,13 +36,13 @@ export default class Scoreboard {
 
 	updateScores(players) {
 		players.forEach((player) => {
-			this.players.get(player).find('span.score').text(player.score);
+			this.playersToLi.get(player).find('span.score').text(player.score);
 		});
 	}
 
 	removePlayer(player) {
-		this.players.get(player).remove();
-		this.players.delete(player);
+		this.playersToLi.get(player).remove();
+		this.playersToLi.delete(player);
 	}
 
 }
