@@ -75,14 +75,17 @@ export default class Board {
 	}
 
 	render() {
-
-		setInterval(() => {
+		this.intervalId = setInterval(() => {
 			this.snakes.forEach(snake => {
 				snake.move(this);
 			});
 			this.scoreboard.updateScores(this.snakes);
 			this.checkSnakeSelfCollision();
 		}, constant.DELAY);
+	}
+
+	stopRendering(){
+		clearInterval(this.intervalId);
 	}
 
 	checkSnakeSelfCollision() {

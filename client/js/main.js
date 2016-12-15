@@ -3,6 +3,7 @@
 import Board from './board';
 import server from './sendToServer.js';
 import createCanvasGame from './createCanvasGame.js';
+import displayDisconnectMessage from './displayDisconnectMessage.js';
 import * as constant from './constant';
 import $ from 'jquery';
 
@@ -39,10 +40,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 
 			server.sendNewUser();
-			server.sendDeleteUser();
+			//server.sendDeleteUser();
 			server.sendMove();
 
 			board.render();
+
+			server.on('disconnect', function(){
+				board.stopRendering();
+				displayDisconnectMessage();
+
+			});
 
 			$('body').keydown((e) => {
 				if (e.keyCode === 37 && clientLocaleSnake.direction !== 'right') {
@@ -60,9 +67,4 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		});
 	});
-
-	server.on('disconnection', function(){
-        // Destroy Snake
-	});
-
 });
