@@ -3,7 +3,7 @@
 import createCanvasGame from './createCanvasGame.js';
 import Snake from './snake';
 import Apple from './apple';
-import scoreBoard from './scoreboard';
+import Scoreboard from './scoreboard';
 import $ from 'jquery';
 import * as constant from './constant';
 
@@ -11,6 +11,7 @@ export default class Board {
 
 	constructor() {
 		this.context = createCanvasGame();
+		this.scoreboard = new Scoreboard();
 		this.snakes = [];
 		this.apples = [];
 		this.color = [
@@ -25,11 +26,14 @@ export default class Board {
 			"#51f1e0",
 			"#F2385A"
 		];
+
+		this.scoreboard.playersContainer.appendTo('#scoreboard');
 	}
 
 	newSnake(x, y, name) {
 		if(this.snakes.length < 10){
 			let snake = new Snake(this.context, x, y, this.getAvailableColor(), name);
+			this.scoreboard.addPlayer(snake);
 			snake.draw();
 
 			this.snakes.push(snake);
@@ -61,11 +65,10 @@ export default class Board {
 		setInterval(() => {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			this.snakes[0].move(this);
+			this.scoreboard.updateScores(this.snakes);
 			this.checkSnakeSelfCollision();
             // END TEMP
 		}, constant.DELAY);
-
-		scoreBoard(this.snakes);
 
 		$('body').keydown((e) => {
 			let snake = this.snakes[0];
@@ -99,7 +102,7 @@ export default class Board {
                     firstBodyPart.y < bodyPart.y + bodyPart.height &&
                     firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
 
-                	this.removeSnakeFromArray(i);
+					this.removeSnakeFromArray(i);
 				}
 			});
 		});
@@ -107,6 +110,7 @@ export default class Board {
 
 	removeSnakeFromArray(i) {
 		this.snakes[i].remove();
+		this.scoreboard.removePlayer(this.snakes[i]);
 		this.snakes.splice(i, 1);
 	}
 

@@ -1,19 +1,46 @@
 import $ from 'jquery';
 
-export default function scoreBoard(snakes) {
-	snakes.forEach(function(e){
-		var li = $("<li>");
-		li.css( "color", e.color);
+export default class Scoreboard {
+
+	constructor() {
+		this.playersToLi = new WeakMap;
+		this.playersContainer = $('<ul>', {id: 'player-list'});
+	}
+
+	addPlayer(player) {
+		let playerContainer = this.createPlayer(player);
+		this.playersToLi.set(player, playerContainer);
+
+		this.playersContainer.append(playerContainer);
+	}
+
+	createPlayer(player) {
+		var li = $('<li>');
+		li.css('color', player.color);
+		li.data('name', player.name);
 		li.append(
 			$('<span>', {
-			    class: 'name',
-			    text: e.name
+				class: 'name',
+				text: player.name
 			}),
 			$('<span>', {
-			    class: 'score',
-			    text: e.score
+				class: 'score',
+				text: player.score
 			})
 		);
-		$("#userlist").append(li);
-	});
+
+		return li;
+	}
+
+	updateScores(players) {
+		players.forEach((player) => {
+			this.playersToLi.get(player).find('span.score').text(player.score);
+		});
+	}
+
+	removePlayer(player) {
+		this.playersToLi.get(player).remove();
+		this.playersToLi.delete(player);
+	}
+
 }

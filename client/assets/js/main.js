@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/30)) * 30;
 			board.newSnake(long, lat, name);
 
-			// TEMP: CREATE SEVEN APPLES FOR TEST PURPOSES
+            // TEMP: CREATE SEVEN APPLES FOR TEST PURPOSES
 			board.newApple(765, 315);
 			board.newApple(1155, 75);
 			board.newApple(495, 615);
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			board.newApple(135, 285);
 			board.newApple(1005, 795);
 			board.newApple(105, 855);
-			// END TEMP
+            // END TEMP
 
 			server.sendNewUser();
 			server.sendDeleteUser();
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	server.on('disconnection', function(){
-		// Destroy Snake
+        // Destroy Snake
 	});
 
 });
