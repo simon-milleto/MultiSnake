@@ -10,7 +10,6 @@ export default class Board {
 
 	constructor(canvasContext) {
 		this.context = canvasContext;
-		this.scoreboard = new Scoreboard();
 		this.snakes = [];
 		this.apples = [];
 		this.color = [
@@ -25,8 +24,6 @@ export default class Board {
 			"#51f1e0",
 			"#F2385A"
 		];
-
-		this.scoreboard.playersContainer.appendTo('#scoreboard');
 	}
 
 	newSnake(x, y, name) {
@@ -70,7 +67,14 @@ export default class Board {
 		});
 	}
 
+	createScoreboard() {
+        this.scoreboard = new Scoreboard();
+
+        this.scoreboard.playersContainer.appendTo('#scoreboard');
+    }
+
 	render() {
+
 		setInterval(() => {
             // TEMP: ONLY START MOVING THE FIRST SNAKE FOR TEST PURPOSES
 			this.snakes[0].move(this);

@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			let context = createCanvasGame();
 			let board = new Board(context);
+			board.createScoreboard();
 
 			/* Random place on board for testing purpose */
 			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/30)) * 30;
