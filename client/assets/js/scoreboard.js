@@ -1,19 +1,45 @@
 import $ from 'jquery';
 
-export default function scoreBoard(snakes) {
-	snakes.forEach(function(e){
-		var li = $("<li>");
-		li.css( "color", e.color);
+export default class Scoreboard {
+
+	addPlayer(snake) {
+		$("#userlist").append(this.createPlayer(snake));
+	}
+
+	createPlayer(snake) {
+		var li = $('<li>');
+		li.css('color', snake.color);
+		li.data('name', snake.name);
 		li.append(
 			$('<span>', {
-			    class: 'name',
-			    text: e.name
+				class: 'name',
+				text: snake.name
 			}),
 			$('<span>', {
-			    class: 'score',
-			    text: e.score
+				class: 'score',
+				text: snake.score
 			})
 		);
-		$("#userlist").append(li);
-	});
+
+		return li;
+	}
+
+	updateScores(snakes) {
+		snakes.forEach((snake) => {
+			$.each($('#userlist li'), (i, player) => {
+				if ($(player).data('name') === snake.name) {
+					$('span.score').text(snake.score);
+				}
+			});
+		});
+	}
+
+	removePlayer(snake) {
+		$.each($('#userlist li'), (i, player) => {
+			if ($(player).data('name') === snake.name) {
+				player.remove();
+			}
+		});
+	}
+
 }
