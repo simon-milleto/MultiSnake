@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			e.preventDefault();
 			var name = $(this).find('input.username')[0].value;
 
-			$(this).remove();
+			$('div.username').remove();
 
 			let context = createCanvasGame();
 			let board = new Board(context);
