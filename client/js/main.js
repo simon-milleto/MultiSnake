@@ -43,12 +43,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			//server.sendDeleteUser();
 			server.sendMove();
 
+			//server.sendAppleEaten(x, y);
+
 			board.render();
+			board.on('appleEaten', function(position){
+				server.sendAppleEaten(position);
+			});
 
 			server.on('disconnect', function(){
 				board.stopRendering();
 				displayDisconnectMessage();
-
 			});
 
 			$('body').keydown((e) => {

@@ -15,6 +15,9 @@ var serverObject = ee({
 	sendMove(event){
 		socket.emit('movement', event);
 	},
+	sendAppleEaten(position){
+		socket.emit('appleEaten', position);
+	},
 	changeDirection(name, direction) {
 		socket.emit('changeDirection', {name: name, direction: direction});
 	}
@@ -41,6 +44,11 @@ socket.on('disconnect', function() {
 });
 
 socket.on('new_apple', function(data) {
+	serverObject.emit('new_apple', data);
+});
+
+socket.on('appleEaten', function(data) {
+	console.log('sendto');
 	serverObject.emit('new_apple', data);
 });
 

@@ -30,6 +30,14 @@ io.on('connection', function(socket) {
 		io.emit('disconnect message');
 	});
 
+	socket.on('appleEaten', position => {
+		b.apples.forEach((apple, index) => {
+			if(apple.x === position.x && apple.y === position.y){
+				b.apples.splice(index, 1);
+			}
+		});
+	});
+	
 	socket.on('changeDirection', (data) => {
 		io.emit('setDirection', data);
 	});

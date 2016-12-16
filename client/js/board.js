@@ -4,10 +4,12 @@ import Snake from './snake';
 import Apple from './apple';
 import Scoreboard from './scoreboard';
 import * as constant from './constant';
+import EventEmitter from 'event-emitter-es6';
 
-export default class Board {
+export default class Board extends EventEmitter{
 
 	constructor(canvasContext) {
+		super();
 		this.context = canvasContext;
 		this.snakes = [];
 		this.apples = [];
@@ -81,6 +83,8 @@ export default class Board {
 			});
 			this.scoreboard.updateScores(this.snakes);
 			this.checkSnakeSelfCollision();
+			this.checkCollisionWithApples();
+            // END TEMP
 		}, constant.DELAY);
 	}
 
@@ -104,6 +108,27 @@ export default class Board {
                     firstBodyPart.height + firstBodyPart.y > bodyPart.y) {
 
 					this.removeSnakeFromArray(i);
+				}
+			});
+		});
+	}
+
+	checkCollisionWithApples() {
+		this.snakes.forEach((snake, i) => {
+
+			let firstBodyPart = snake.bodyParts[0];
+
+			this.apples.forEach((apple, index) => {
+				if (firstBodyPart.x < apple.x + apple.radius * 2 &&
+	                firstBodyPart.x + firstBodyPart.width > apple.x &&
+	                firstBodyPart.y < apple.y + apple.radius * 2 &&
+	                firstBodyPart.height + firstBodyPart.y > apple.y) {
+
+					this.apples.splice(index, 1);
+					snake.addScore();
+					snake.addBodyPart();
+
+					this.emit('appleEaten', {'x':apple.x, 'y':apple.y});
 				}
 			});
 		});
