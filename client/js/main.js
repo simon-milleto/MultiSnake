@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			board.render();
 			board.on('appleEaten', function(position){
-				server.sendAppleEaten(position.x, position.y);
+				server.sendAppleEaten(position);
 			});
 
 			server.on('disconnect', function(){
