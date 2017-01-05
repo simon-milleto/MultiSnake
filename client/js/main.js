@@ -24,13 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			/* Random place on board for testing purpose */
 			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/constant.GRID_SIZE)) * constant.GRID_SIZE;
 			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/constant.GRID_SIZE)) * constant.GRID_SIZE;
-			let long2 = Math.floor(Math.random() * (constant.CANVAS_WIDTH/constant.GRID_SIZE)) * constant.GRID_SIZE;
-			let lat2 = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/constant.GRID_SIZE)) * constant.GRID_SIZE;
 			let clientLocaleSnake = board.newSnake(long, lat, name);
 			board.current = clientLocaleSnake;
-			board.newSnake(long2, lat2, 'TEST');
-			board.newSnake(long2, lat2, 'mdr');
-			board.newSnake(long2, lat2, 'lol');
 
 			server.on('new_apple', function(data){
 				let apple = board.newApple(data.x, data.y);
