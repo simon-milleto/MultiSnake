@@ -158,7 +158,7 @@ export default class Snake {
 		this.bodyParts.forEach((bodyPart) => {
 			bodyPart.remove();
 		});
-        this.dead=true;
+		this.dead=true;
 	}
 
 }

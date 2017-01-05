@@ -96,7 +96,7 @@ export default class Board extends EventEmitter{
 
 	checkSnakeSelfCollision() {
 
-		this.snakes.forEach((snake, i) => {
+		this.snakes.forEach((snake) => {
 
 			let firstBodyPart = snake.bodyParts[0];
 			snake.bodyParts.forEach((bodyPart, index) => {
