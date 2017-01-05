@@ -4,7 +4,7 @@ export default class Scoreboard {
 
 	constructor() {
 		this.playersToLi = new WeakMap;
-		this.playersContainer = $('<ul>', {id: 'player-list'});
+		this.playersContainer = $('<ol>', {id: 'player-list'});
 	}
 
 	addPlayer(player) {
@@ -37,10 +37,10 @@ export default class Scoreboard {
 			return p2.score - p1.score;
 		})
 
-		$("#player-list li").remove();
+		this.playersContainer.empty();
 
 		players.forEach((player) => {
-			$("#player-list").append(this.createPlayer(player));
+			this.playersContainer.append(this.createPlayer(player));
 		});
 	}
 }
