@@ -81,7 +81,7 @@ export default class Board extends EventEmitter{
 			this.snakes.forEach(snake => {
 				snake.move(this);
 			});
-			this.scoreboard.updateScores(this.snakes);
+			this.scoreboard.updateScores(this.snakes, this);
 			this.checkSnakeSelfCollision();
 			this.checkCollisionWithApples();
             // END TEMP

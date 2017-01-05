@@ -19,6 +19,7 @@ export default class Snake {
 
 		this.bodyParts = [];
 		this.name = name;
+
 	}
 
 	draw() {

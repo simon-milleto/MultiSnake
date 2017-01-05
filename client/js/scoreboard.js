@@ -32,9 +32,12 @@ export default class Scoreboard {
 		return li;
 	}
 
-	updateScores(players) {
+	updateScores(players, board) {
 		players.forEach((player) => {
 			this.playersToLi.get(player).find('span.score').text(player.score);
+			if(player === board.current){
+				this.playersToLi.get(player).addClass('current');
+			}
 		});
 	}
 
