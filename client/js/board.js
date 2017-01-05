@@ -136,8 +136,8 @@ export default class Board extends EventEmitter{
 
 	removeSnakeFromArray(i) {
 		this.snakes[i].remove();
-		this.scoreboard.removePlayer(this.snakes[i]);
 		this.snakes.splice(i, 1);
+		this.scoreboard.updateScores(this.snakes[i]);
 	}
 
 }

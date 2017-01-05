@@ -33,14 +33,14 @@ export default class Scoreboard {
 	}
 
 	updateScores(players) {
+		players.sort(function(p1, p2){
+			return p2.score - p1.score;
+		})
+
+		$("#player-list li").remove();
+
 		players.forEach((player) => {
-			this.playersToLi.get(player).find('span.score').text(player.score);
+			$("#player-list").append(this.createPlayer(player));
 		});
 	}
-
-	removePlayer(player) {
-		this.playersToLi.get(player).remove();
-		this.playersToLi.delete(player);
-	}
-
 }
