@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				});
 			});
-
 			server.sendNewUser();
 			//server.sendDeleteUser();
 			server.sendMove();

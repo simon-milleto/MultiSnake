@@ -19,7 +19,7 @@ export default class Snake {
 
 		this.bodyParts = [];
 		this.name = name;
-
+        this.dead = false;
 	}
 
 	draw() {
@@ -158,6 +158,7 @@ export default class Snake {
 		this.bodyParts.forEach((bodyPart) => {
 			bodyPart.remove();
 		});
+        this.dead = true;
 	}
 
 }
