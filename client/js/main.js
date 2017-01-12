@@ -24,9 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			/* Random place on board for testing purpose */
 			let long = Math.floor(Math.random() * (constant.CANVAS_WIDTH/constant.GRID_SIZE)) * constant.GRID_SIZE;
 			let lat = Math.floor(Math.random() * (constant.CANVAS_HEIGHT/constant.GRID_SIZE)) * constant.GRID_SIZE;
-			board.newSnake(long, lat, 'TEST1');
-			board.newSnake(long, lat, 'TEST2');
-			board.newSnake(long, lat, 'TEST3');
 			let clientLocaleSnake = board.newSnake(long, lat, name);
 
 			

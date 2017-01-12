@@ -7,13 +7,6 @@ export default class Scoreboard {
 		this.playersContainer = $('<ol>', {id: 'player-list'});
 	}
 
-	addPlayer(player) {
-		let playerContainer = this.createPlayer(player);
-		this.playersToLi.set(player, playerContainer);
-
-		this.playersContainer.append(playerContainer);
-	}
-
 	createPlayer(player) {
 		var li = $('<li>');
 		li.css('color', player.color);
