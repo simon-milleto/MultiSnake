@@ -30,11 +30,11 @@ export default class Board extends EventEmitter{
 	newSnake(x, y, name) {
 		if(this.snakes.length < 10){
 			let snake = new Snake(this.context, x, y, this.getAvailableColor(), name);
-			this.scoreboard.addPlayer(snake);
+			
 			snake.draw();
 
 			this.snakes.push(snake);
-
+			this.scoreboard.updateScores(this.snakes);
 			return snake;
 		} else {
 			console.error('Error : only 10 snakes can be on the board');
@@ -139,8 +139,8 @@ export default class Board extends EventEmitter{
 
 	removeSnakeFromArray(i) {
 		this.snakes[i].remove();
-		this.scoreboard.removePlayer(this.snakes[i]);
 		this.snakes.splice(i, 1);
+		this.scoreboard.updateScores(this.snakes[i]);
 	}
 
 }
